@@ -2,6 +2,8 @@
 .detail-hero { padding-top: calc(var(--header) + 56px); background: #fff; color: var(--ink); }
 .company-page .nav { background: var(--dark) !important; color: #fff !important; }
 .company-page .nav.is-solid { background: var(--dark) !important; color: #fff !important; box-shadow: 0 1px 0 rgba(0, 0, 0, .2); }
+.company-page .nav .logo-color { opacity: 0 !important; }
+.company-page .nav .logo-white { opacity: 1 !important; }
 .company-page .nav-links a { color: #fff; }
 .company-page .nav-cta { border-color: #fff; color: #fff; }
 .company-page .nav-cta:hover { background: rgba(255, 255, 255, .1); }

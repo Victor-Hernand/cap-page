@@ -691,7 +691,7 @@ function ExpandedAboutPage() {
 
   return (
     <div className="site-shell company-page">
-      <Header />
+      <Header home={false} />
       <main id="contenido">
         <section className="section wrap" id="nosotros-expanded" style={{ paddingTop: 100 }}>
           <a href={B + '#nosotros'} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 50, color: 'var(--red)', textDecoration: 'none', fontWeight: 600, fontSize: 14 }}>
