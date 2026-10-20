@@ -48,7 +48,7 @@
 .others-grid .arrow { color: var(--red); font-size: 20px; }
 .detail-cta .display { margin: 24px 0; }
 .detail-cta p { max-width: 440px; margin: 0 0 34px; color: var(--dark-muted); font-size: 16px; line-height: 1.7; }
-.detail-hero .hero-actions .button { min-height: 56px; font-size: 13px; padding: 0 28px; box-shadow: 0 8px 24px rgba(215, 25, 32, 0.25); color: #fff !important; background: var(--red) !important; border-color: var(--red) !important; }
+.detail-hero .hero-actions .button { min-height: 56px; font-size: 13px; padding: 0 28px; box-shadow: 0 8px 24px rgba(176, 29, 37, 0.25); color: #fff !important; background: var(--red) !important; border-color: var(--red) !important; }
 .detail-hero .hero-actions .button:hover { background: var(--red-dark) !important; border-color: var(--red-dark) !important; }
 .detail-social { color: #000; }
 .detail-social .mini-label { color: #000; }
