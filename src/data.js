@@ -161,6 +161,7 @@ export const gallery = [
   { src: B + 'images/equipo-almacen-2.jpg', alt: 'Colaboradores de Grupo CAP reunidos en el almacén', caption: 'Un mismo equipo', layout: 'feature', position: '50% 55%' },
   { src: B + 'images/sala-juntas.jpg', alt: 'Equipo administrativo de Grupo CAP en la sala de juntas', caption: 'Sala de juntas', layout: 'wide', position: '50% 60%' },
   { src: B + 'images/colaborador.jpg', alt: 'Colaborador de Grupo CAP en su estación de trabajo', caption: 'Compromiso diario', layout: 'wide', position: '60% 40%' },
+  { src: B + 'images/blessing-equipo-tienda.jpg', alt: 'Equipo de Auto Repuestos Blessing atendiendo en tienda', caption: 'Auto Repuestos Blessing', layout: 'full', position: '50% 45%' },
 ]
 
 export const zones = [
