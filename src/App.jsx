@@ -312,7 +312,7 @@ const introSlides = [
   { src: B + 'images/intro/02-aeromap.jpg', caption: 'Distribuidora Mansiago' },
   { src: B + 'images/intro/03-kyb.jpg', caption: 'Japan HN' },
   { src: B + 'images/intro/04-didasa.jpg', caption: 'Tecnicentro DIDASA' },
-  { src: B + 'images/intro/05-tienda.jpg', caption: 'Atención al cliente' },
+  { src: B + 'images/intro/05-tienda.jpg', caption: 'Auto Repuestos Blessing' },
   { src: B + 'images/intro/06-grupo-cap.jpg', caption: 'Un solo grupo' },
 ]
 
@@ -791,14 +791,14 @@ function HomePage() {
               <a href={B + 'nosotros-completo'} className="button button-red">Ver más <span aria-hidden="true">→</span></a>
             </div>
             <figure className="about-media reveal">
-              <img src={B + 'images/equipo-oficina.jpg'} alt="Parte del equipo de Grupo CAP en las oficinas corporativas" loading="lazy" />
+              <img src={B + 'images/equipo-siete-cap.jpg'} alt="Equipo de Grupo CAP frente al logo de la empresa" loading="lazy" style={{ aspectRatio: 'auto', objectFit: 'contain' }} />
               <figcaption><strong>160+</strong><span>Colaboradores comprometidos</span></figcaption>
             </figure>
           </div>
         </section>
 
         <section className="future" style={{ minHeight: 400, paddingBottom: 0, marginBottom: 0 }}>
-          <img className="future-image" src={B + 'images/equipo-almacen.jpg'} alt="" loading="lazy" />
+          <img className="future-image" src={B + 'images/equipo-muro-cap.jpg'} alt="" loading="lazy" />
           <div className="future-copy wrap reveal">
             <h3 style={{ fontSize: 28, fontWeight: 600, color: '#fff', letterSpacing: '1.4px', textTransform: 'uppercase', margin: '0 0 18px' }}>Visión de futuro</h3>
             <h2 className="display"><Words>Construimos hoy<br />el sector de <em>mañana.</em></Words></h2>
@@ -827,8 +827,7 @@ function HomePage() {
           <div className="contact-grid wrap" style={{ marginTop: 80 }}>
             <figure className="contact-photo reveal">
               <span className="contact-photo-hex" aria-hidden="true" />
-              <img src={B + 'images/colaborador-carga.png'} alt="Colaborador de Grupo CAP transportando cajas con carretilla" loading="lazy" />
-              <figcaption className="contact-photo-tag"><span className="status-dot" aria-hidden="true" />Cobertura nacional</figcaption>
+              <img src={B + 'images/equipo-bodega-repuestos.jpg'} alt="Colaboradores de Grupo CAP atendiendo en la bodega de repuestos" loading="lazy" style={{ width: '100%', height: 'auto', aspectRatio: '.866', objectFit: 'cover', clipPath: 'polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)', filter: 'none', animation: 'none' }} />
             </figure>
             <div className="contact-intro reveal">
               <h2 className="display"><Words>Conectemos<br /><em>juntos.</em></Words></h2>
