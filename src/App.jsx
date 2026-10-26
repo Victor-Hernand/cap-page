@@ -308,12 +308,12 @@ const pillarIcons = [
 ]
 
 const introSlides = [
-  { src: B + 'images/intro/01-welmet.jpg', caption: 'Inversiones S&M' },
-  { src: B + 'images/intro/02-aeromap.jpg', caption: 'Distribuidora Mansiago' },
-  { src: B + 'images/intro/03-kyb.jpg', caption: 'Japan HN' },
-  { src: B + 'images/intro/04-didasa.jpg', caption: 'Tecnicentro DIDASA' },
-  { src: B + 'images/intro/05-tienda.jpg', caption: 'Auto Repuestos Blessing' },
-  { src: B + 'images/intro/06-grupo-cap.jpg', caption: 'Un solo grupo' },
+  { src: B + 'images/intro/inversiones-sm.jpg', caption: 'Inversiones S&M' },
+  { src: B + 'images/intro/distribuidora-mansiago.jpg', caption: 'Distribuidora Mansiago' },
+  { src: B + 'images/intro/japan-hn.jpg', caption: 'Japan HN' },
+  { src: B + 'images/intro/tecnicentro-didasa.jpg', caption: 'Tecnicentro DIDASA' },
+  { src: B + 'images/intro/auto-repuestos-blessing.jpg', caption: 'Auto Repuestos Blessing' },
+  { src: B + 'images/intro/grupo-cap.jpg', caption: 'Un solo grupo' },
 ]
 
 const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -381,7 +381,7 @@ function Intro() {
       </div>
       <div className="intro-logo">
         <img src={B + 'logos/cap-intro.png'} alt="Grupo CAP" />
-        <span className="intro-tagline">La movilidad mueve el progreso</span>
+        <span className="intro-tagline">GRUPO EMPRESARIAL CAP </span>
       </div>
       <button type="button" className="intro-skip" onClick={() => setPhase('done')}>Saltar intro <span aria-hidden="true">→</span></button>
     </div>
@@ -712,7 +712,7 @@ function ExpandedAboutPage() {
               <article className="reveal"><span className="mini-label">Nuestra visión</span><p style={{ wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'none', WebkitHyphens: 'none' }}>{group.vision}</p></article>
             </div>
             <blockquote className="belief reveal"><p>En CAP creemos que <em>la movilidad mueve el progreso</em>, por eso trabajamos para garantizar que cada vehículo en Honduras tenga acceso a repuestos y servicios confiables, seguros y de alto rendimiento.</p></blockquote>
-            <figure className="purpose-photo reveal"><img src={B + 'images/colaboradora.png'} alt="Colaboradora de Grupo CAP con tableta en mano" loading="lazy" /></figure>
+            <figure className="purpose-photo reveal"><img src={B + 'images/colaboradora.png'} alt="Colaboradora de Grupo CAP con tableta en mano" width="321" height="447" loading="lazy" decoding="async" /></figure>
           </div>
         </section>
 
@@ -813,8 +813,7 @@ function HomePage() {
               <img className="careers-logo" src={B + 'logos/cap-intro.png'} alt="Grupo CAP" loading="lazy" />
               <span className="mini-label">Talento CAP</span>
               <h3><Words>¿Deseas trabajar con nosotros?</Words></h3>
-              <p style={{ textAlign: 'justify' }}>Súmate a un equipo que impulsa la movilidad en Honduras. Consulta nuestras vacantes disponibles y conoce más de nuestra cultura en LinkedIn.</p>
-            </div>
+              <p style={{ textAlign: 'justify' }}>Haz crecer tu carrera mientras mueves a Honduras. Descubre nuestras vacantes y nuestra cultura en LinkedIn</p></div>
             <div className="careers-actions">
               <a className="button button-light" href={contact.recruit} {...external}>Ver vacantes <span aria-hidden="true">↗</span></a>
               <a className="button button-ghost" href={contact.linkedin} {...external}>

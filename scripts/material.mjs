@@ -145,7 +145,7 @@ const summary = `<!doctype html><html lang="es"><head><meta charset="utf-8"><sty
   <div class="top">
     <img src="${asset('logos/cap-blanco.png')}" alt="Grupo CAP">
     <span class="label">Resumen corporativo</span>
-    <h1>La movilidad mueve<br>el progreso.</h1>
+    <h1>GRUPO EMPRESARIAL CAP  mueve<br></h1>
     <p>${esc(group.lead)}</p>
   </div>
   <div class="stats">${stats.map((s) => `<div><b>${pad(s.value)}${s.suffix ?? ''}</b><span>${esc(s.label)}</span></div>`).join('')}</div>
