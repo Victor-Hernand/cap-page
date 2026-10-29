@@ -956,8 +956,6 @@ body.intro-lock .hero h1 .word > span, body.intro-lock .hero-content > * { anima
 .process-grid .process-card .process-phone:hover .process-phone-icon { background: #fff; color: var(--red); }
 .process-card .process-phone + .process-flip-hint { padding-top: 12px; }
 
-/* Orden de Quiénes somos */
-#nosotros .about-text > p:first-child { margin-top: 0; font-size: clamp(18px, 1.6vw, 21px); color: var(--ink); line-height: 1.6; padding-left: 20px; border-left: 3px solid var(--red); max-width: 560px; }
 .about-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; gap: clamp(32px, 6vw, 90px); margin-top: 110px; padding-top: 48px; border-top: 1px solid var(--line); }
 .about-heading .red-rule { margin-bottom: 0; }
 .about-heading .lead { margin-top: 6px; }
