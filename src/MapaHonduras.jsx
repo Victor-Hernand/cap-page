@@ -5,13 +5,13 @@ import * as topojson from 'topojson-client'
 const cfg = {
   header: 'HN // 14.07°N 87.21°O',
   colors: {
-    background: '#b01d25',
-    panel: '#b01d25',
+    background: '#B21E25',
+    panel: '#B21E25',
     outline: '#f6c9cc',
     fill: 'rgba(255,255,255,0.15)',
     label: '#5a0a10',
     labelText: '#ffffff',
-    point: '#b01d25',
+    point: '#B21E25',
     lines: 'rgba(255,255,255,0.65)',
   },
   hub: 'Tegucigalpa',
