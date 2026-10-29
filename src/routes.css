@@ -92,7 +92,7 @@
 
 /* Tarjetas de empresas (fondo claro) */
 .company-filters { margin-bottom: 28px; }
-.company-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin: 0; padding: 0; list-style: none; }
+.company-cards { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
 .company-card { position: relative; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); background: #fff; animation: company-card-in .6s cubic-bezier(.2, .7, .2, 1) backwards; animation-delay: calc(var(--i, 0) * 70ms); transition: border-color .3s, box-shadow .3s, transform .3s; }
 .company-card:before { content: ''; position: absolute; inset: 0 0 auto; z-index: 1; height: 3px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
 .company-card:hover { border-color: var(--red); box-shadow: 0 24px 40px -28px rgba(0, 0, 0, .5); transform: translateY(-4px); }
@@ -114,8 +114,7 @@
 .company-card-wa svg { width: 20px; height: 20px; }
 .company-card-wa:hover { border-color: var(--red); background: var(--red); color: #fff; }
 @keyframes company-card-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
-@media (max-width: 960px) { .company-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 640px) { .company-cards { grid-template-columns: 1fr; } }
+@media (max-width: 960px) { .company-cards { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; } .company-card { flex: 0 0 240px; scroll-snap-align: start; } }
 @media (prefers-reduced-motion: reduce) { .company-card, .company-card:before, .company-card-logo img, .company-card-link span { animation: none; transition: none; } }
 
 /* Bloque principal alineado a la izquierda */
@@ -185,7 +184,7 @@
 @media (prefers-reduced-motion: reduce) { .ecosystem-step { transition: none; } .ecosystem-step:not(.is-visible) { opacity: 1; transform: none; } }
 
 /* Por qué Grupo CAP: sección oscura con cuatro tarjetas */
-.why { background: var(--charcoal); color: #fff; padding: 96px 0; }
+.why { background: var(--red); color: #fff; padding: 96px 0; }
 .why-inner { width: min(1180px, calc(100% - 2 * var(--gutter))); margin: 0 auto; }
 .why-eyebrow { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 18px; color: #fff; font: 700 12px var(--sans); letter-spacing: 1.8px; text-transform: uppercase; }
 .why-eyebrow:before { content: ''; width: 28px; height: 1px; background: #fff; }
@@ -197,7 +196,7 @@
 .why-card:first-child { border-left: 0; }
 .why-card:not(.is-visible) { opacity: 0; transform: translateY(14px); }
 .why-card:hover { background: rgba(255, 255, 255, .04); }
-.why-icon { display: inline-grid; place-items: center; width: 40px; height: 40px; color: var(--red); }
+.why-icon { display: inline-grid; place-items: center; width: 40px; height: 40px; color: #fff; }
 .why-icon svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .why-card strong { display: block; margin-top: 22px; font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
 .why-card p { margin: 10px 0 0; color: rgba(255, 255, 255, .7); font-size: 14px; line-height: 1.6; }
