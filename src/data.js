@@ -6,7 +6,7 @@ export const contact = {
   mapQuery: 'Plaza Aire Frío, Bulevar Comunidad Económica Europea, Tegucigalpa',
   phone: '+504 3156-6090',
   phoneHref: '+50431566090',
-  email: 'administracion@inversionessymhn.com',
+  email: 'grupocap@cap.hn',
   hours: 'Lunes a viernes · 8:00 AM — 5:00 PM',
   whatsapp: 'https://wa.me/50431566090',
   instagram: 'https://www.instagram.com/grupoempresarialcap/',
