@@ -17,8 +17,8 @@ export const contact = {
 }
 
 export const group = {
-  lead: 'Somos un grupo empresarial hondureño que integra empresas especializadas en importación, distribución y comercialización de autopartes, así como en servicio automotriz.',
-  traits: ['Reunimos a Inversiones S&M, Distribuidora Mansiago, Japan HN, Auto Repuestos Blessing y Tecnicentro DIDASA bajo una dirección corporativa que impulsa su competitividad, fortalece su gestión y orienta su crecimiento a largo plazo.', 'Cada empresa aporta una especialidad y una relación propia con sus clientes. Desde CAP, conectamos esas capacidades con una estrategia común, disciplina financiera y desarrollo del talento para construir negocios sólidos y relaciones comerciales duraderas.'],
+  lead: 'Grupo empresarial hondureño de autopartes y servicio automotriz.',
+  traits: ['Reunimos a Inversiones S&M, Distribuidora Mansiago, Japan HN, Auto Repuestos Blessing y Tecnicentro DIDASA bajo una dirección corporativa común.', 'Cada empresa mantiene su especialidad. Desde CAP aportamos estrategia, disciplina financiera y desarrollo del talento.'],
   sharedServices: [
     { label: 'Administración', icon: 'admin' },
     { label: 'Finanzas', icon: 'finance' },
