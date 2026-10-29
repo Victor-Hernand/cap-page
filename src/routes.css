@@ -189,7 +189,8 @@
 .why-eyebrow { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 18px; color: #fff; font: 700 12px var(--sans); letter-spacing: 1.8px; text-transform: uppercase; }
 .why-eyebrow:before { content: ''; width: 28px; height: 1px; background: #fff; }
 .why-head { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: end; gap: 40px; margin-bottom: 48px; }
-.why-head h2 { margin: 0; }
+.why-head h2 { margin: 0; color: #fff; }
+.why-head h2 em { color: #fff; }
 .why-head p { margin: 0; color: rgba(255, 255, 255, .72); font-size: 16px; line-height: 1.7; }
 .why-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; border: 1px solid rgba(255, 255, 255, .14); border-radius: 6px; overflow: hidden; }
 .why-card { padding: 32px 26px 30px; border-left: 1px solid rgba(255, 255, 255, .14); transition: background .35s, opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
