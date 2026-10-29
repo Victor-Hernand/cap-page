@@ -934,17 +934,15 @@ function HomePage() {
           <div className="hero-content">
             <div className="eyebrow-spacer" />
             <h1><Words>Impulsamos la <em>movilidad</em><br />que mueve el progreso.</Words></h1>
-            <p className="hero-copy">Siete empresas que cubren toda la cadena automotriz en Honduras: importamos, distribuimos, vendemos, instalamos y entregamos repuestos.</p>
-            <div className="hero-cta">
-              <div className="hero-actions hero-actions-left">
-                <a className="button button-red" href="#empresas">Ver nuestras empresas <span aria-hidden="true">↓</span></a>
-                <a className="button button-ghost" href="#contacto">Contactar al equipo <span aria-hidden="true">↗</span></a>
-              </div>
-              <p className="hero-summary hero-summary-centered">Conozca nuestras empresas y encuentre el equipo que necesita.</p>
-            </div>
             <p className="hero-byline">Grupo Empresarial CAP Honduras</p>
           </div>
         </section>
+        <div className="hero-cta hero-cta-below">
+          <div className="hero-actions hero-actions-left">
+            <a className="button button-red" href="#empresas">Ver nuestras empresas <span aria-hidden="true">↓</span></a>
+            <a className="button button-ghost" href="#contacto">Contactar al equipo <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
 
         <section className="light-section" id="cobertura" style={{ paddingTop: 24, paddingBottom: 0, backgroundImage: 'none' }}>
           <div className="section wrap" style={{ paddingTop: 0, paddingBottom: 0 }}>
