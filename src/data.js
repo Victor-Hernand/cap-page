@@ -12,13 +12,13 @@ export const contact = {
   instagram: 'https://www.instagram.com/grupoempresarialcap/',
   facebook: 'https://www.facebook.com/invrcastro/',
   tiktok: 'https://www.tiktok.com/@capgrupo',
-  recruit: 'https://recruit.capgrupo.com/',
+  recruit: 'https://recruit.capgrupo.com/aplicar',
   linkedin: 'https://www.linkedin.com/company/caphn/posts/?feedView=all',
 }
 
 export const group = {
-  lead: 'CAP es el Centro de Servicios Compartidos del Holding Grupo Castro: un corporativo que centraliza y profesionaliza la gestión de nuestras empresas automotrices.',
-  traits: 'Nos caracteriza la amplia cobertura nacional, un portafolio completo de autopartes y servicios, procesos eficientes, precios competitivos y un compromiso inquebrantable con la calidad, la innovación y la satisfacción del cliente.',
+  lead: 'Somos un grupo empresarial hondureño que integra empresas especializadas en importación, distribución y comercialización de autopartes, así como en servicio automotriz.',
+  traits: ['Reunimos a Inversiones S&M, Distribuidora Mansiago, Japan HN, Auto Repuestos Blessing y Tecnicentro DIDASA bajo una dirección corporativa que impulsa su competitividad, fortalece su gestión y orienta su crecimiento a largo plazo.', 'Cada empresa aporta una especialidad y una relación propia con sus clientes. Desde CAP, conectamos esas capacidades con una estrategia común, disciplina financiera y desarrollo del talento para construir negocios sólidos y relaciones comerciales duraderas.'],
   sharedServices: [
     { label: 'Administración', icon: 'admin' },
     { label: 'Finanzas', icon: 'finance' },
@@ -32,92 +32,133 @@ export const group = {
     { label: 'Talento humano', icon: 'people' },
   ],
   members: ['inversiones-sm', 'auto-repuestos-blessing', 'tecnicentro-didasa', 'distribuidora-mansiago', 'cap-logistics', 'soluciones-marlons'],
-  mission: 'Ser aliados estratégicos del rubro automotriz, brindando productos y servicios de calidad que apoyen el crecimiento de nuestros clientes mediante atención profesional, excelencia operativa y soluciones integrales.',
-  vision: 'Ser líderes en el mercado nacional y regional, reconocidos por la excelencia en productos y servicios, altos estándares de calidad, precios competitivos y la expansión continua del grupo.',
+  mission: 'Dirigir y fortalecer nuestras empresas para ofrecer productos y servicios confiables a nuestros clientes y desarrollar a nuestra gente, mediante una gestión que integre tecnología, innovación y mejora continua.',
+  vision: 'Consolidarnos como un grupo empresarial de referencia en Honduras, con proyección regional, reconocido por la solidez de sus empresas, la confianza de sus clientes y las oportunidades de crecimiento que ofrece a su gente, con una gestión impulsada por la tecnología, la innovación y la mejora continua de nuestros procesos.',
 }
 
 export const companies = [
   {
-    name: 'Inversiones S&M', slug: 'inversiones-sm', type: 'Importación y distribución · B2B', logo: B + 'logos/SYM-removebg-preview.png', website: 'https://www.inversionessymhn.com',
-    text: 'Importación y distribución de autopartes con cobertura nacional para talleres, distribuidores y flotillas.',
-    description: 'Inversiones S&M es una empresa líder en importación y distribución de autopartes en Honduras, enfocada en el mercado B2B.',
-    highlightsTitle: 'Ofrecemos',
-    highlights: ['Servicio personalizado y confiable', 'Cobertura nacional', 'Entregas rápidas y abastecimiento oportuno', 'Atención a talleres, distribuidores y flotillas'],
-    infrastructure: [['2', 'Bodegas'], ['6', 'Vendedores con cobertura nacional']],
+    name: 'Inversiones S&M', slug: 'inversiones-sm', cta: 'Solicitar cotización mayorista', unit: 'Mayoristas', coverage: 'Nacional · talleres, distribuidores y flotillas', type: 'Importación y distribución · B2B', logo: B + 'logos/SYM-removebg-preview.png', website: 'https://www.inversionessymhn.com',
+    text: 'Importación y distribución mayorista de autopartes en Honduras.',
+    description: 'Importación y distribución mayorista de autopartes en Honduras. Consulte nuestro portafolio y las condiciones de atención para su negocio.',
+    highlightsTitle: 'Qué ofrecemos',
+    highlights: ['Servicio personalizado', 'Cobertura nacional', 'Consulte disponibilidad, cobertura y plazo estimado de entrega con nuestro equipo comercial.', 'Atención a talleres, distribuidores y flotillas'],
     mission: 'Ser el socio estratégico del sector automotriz, ofreciendo autopartes de alta calidad, precios competitivos y asesoría especializada que impulse el crecimiento de nuestros clientes.',
-    vision: 'Consolidarnos como la distribuidora de autopartes más confiable y reconocida del país, destacando por nuestro servicio excepcional, innovación constante y compromiso con el desarrollo automotriz.',
+    vision: 'Consolidarnos como una distribuidora de autopartes confiable, con servicio cercano, innovación constante y compromiso con el desarrollo automotriz.',
     contact: { address: 'Bulevar Comunidad Económica Europea, frente a Plaza Aire Frío', phone: '3156-6090', email: 'administracion@inversionessymhn.com' },
     socials: { facebook: 'https://www.facebook.com/invsym/', instagram: 'https://www.instagram.com/inversiones.sym_hn/', tiktok: 'https://www.tiktok.com/@inversionessym', whatsapp: 'https://wa.me/50492109620' },
   },
   {
-    name: 'Distribuidora Mansiago', slug: 'distribuidora-mansiago', type: 'Lubricantes, fluidos y autopartes · B2B', logo: B + 'logos/mansiago.jpg', website: 'https://www.mansiago.com',
-    text: 'Lubricantes, fluidos, filtros, baterías y autopartes de calidad con respuesta inmediata.',
-    description: 'Distribuidora Mansiago se especializa en lubricantes, fluidos, filtros, baterías y autopartes de calidad.',
-    highlightsTitle: 'Nos caracteriza',
-    highlights: ['Confiabilidad', 'Excelencia en el servicio', 'Atención orientada al cliente', 'Respuesta inmediata con infraestructura eficiente'],
-    infrastructure: [['2', 'Bodegas'], ['6', 'Vendedores con cobertura nacional']],
-    mission: 'Revolucionar la industria automotriz hondureña, garantizando el máximo rendimiento de cada vehículo mediante productos de alta calidad y un servicio al cliente inigualable.',
-    vision: 'Convertirnos en el líder indiscutible de la industria de repuestos en Honduras, estableciendo el estándar de calidad, asequibilidad y satisfacción del cliente.',
+    name: 'Distribuidora Mansiago', slug: 'distribuidora-mansiago', cta: 'Consultar productos para mi negocio', unit: 'Mayoristas', coverage: 'Nacional · lubricantes y fluidos', type: 'Lubricantes, fluidos y autopartes · B2B', logo: B + 'logos/mansiago.jpg', website: 'https://www.mansiago.com',
+    text: 'Distribución mayorista de lubricantes, fluidos, filtros y autopartes.',
+    description: 'Distribución mayorista de lubricantes, fluidos, filtros y autopartes. Consulte disponibilidad y opciones de abastecimiento para su empresa.',
+    highlightsTitle: 'Qué ofrecemos',
+    highlights: ['Atención orientada al cliente', 'Consulte disponibilidad de productos y condiciones de entrega.'],
+    mission: 'Revolucionar la industria automotriz hondureña, buscando el máximo rendimiento de cada vehículo mediante productos de alta calidad y un servicio al cliente cercano.',
+    vision: 'Ser una referencia en la industria de repuestos en Honduras, estableciendo el estándar de calidad, asequibilidad y satisfacción del cliente.',
     contact: { address: 'Bulevar Comunidad Económica Europea, frente a Plaza Aire Frío', phone: '9408-4995', email: 'administracion@mansiago.com' },
     socials: { facebook: 'https://www.facebook.com/distribuidoramansiago', instagram: 'https://www.instagram.com/distribuidoramansiago', tiktok: 'https://www.tiktok.com/@distribuidoramansiago', whatsapp: 'https://wa.me/50495697549' },
   },
   {
-    name: 'Auto Repuestos Blessing', slug: 'auto-repuestos-blessing', type: 'Venta al detalle · B2C', logo: B + 'logos/blessing.png', website: 'https://autorepuestosblessing.com',
-    text: 'Referente nacional en autopartes al detalle: amplia variedad, precios accesibles y servicio a domicilio.',
-    description: 'Auto Repuestos Blessing es referente nacional en la venta de autopartes al detalle, reconocido por su amplia variedad, precios accesibles y calidad.',
-    highlightsTitle: 'Brindamos',
-    highlights: ['Amplio inventario', 'Servicio a domicilio', 'Atención personalizada en tiendas', 'Productos para múltiples marcas'],
-    infrastructure: [['2', 'Tiendas'], ['12', 'Vendedores'], ['10', 'Conserjes de orden y soporte interno']],
-    mission: 'Brindar productos de alta calidad y un servicio excepcional que garantice la satisfacción y fidelidad de nuestros clientes.',
-    vision: 'Posicionarnos como líderes en Honduras y expandirnos en Centroamérica, siendo la opción preferida para la compra de repuestos.',
+    name: 'Auto Repuestos Blessing', slug: 'auto-repuestos-blessing', cta: 'Cotizar mi repuesto', unit: 'Repuestos y taller', coverage: 'Venta en tiendas', type: 'Venta al detalle · B2C', logo: B + 'logos/blessing.png', website: 'https://autorepuestosblessing.com',
+    text: 'Autopartes al detalle en Tegucigalpa para distintas marcas de vehículos.',
+    description: 'Autopartes al detalle para distintas marcas de vehículos, con atención en Tegucigalpa. Comparta marca, modelo, año y el repuesto que necesita para consultar disponibilidad.',
+    highlightsTitle: 'Qué ofrecemos',
+    highlights: ['Amplio inventario', 'Atención personalizada en tiendas', 'Productos para múltiples marcas'],
+    mission: 'Brindar productos de alta calidad y un servicio excepcional que busque la satisfacción y fidelidad de nuestros clientes.',
+    vision: 'Crecer en Honduras y, a futuro, en Centroamérica, siendo la opción preferida para la compra de repuestos.',
     listTitle: 'Principales líneas de venta',
-    list: ['Lubricantes', 'Filtros', 'Fricciones', 'Dirección', 'Amortiguadores', 'Motores', 'Embragues', 'Soportes'],
+    list: ['Lubricantes', 'Filtros', 'Frenos', 'Dirección', 'Amortiguadores', 'Motores', 'Embragues', 'Soportes'],
     contact: { address: 'Col. Kennedy, frente al Instituto Técnico Honduras', phone: '3285-0830', email: 'gerencia@autorepuestosblessing.com' },
     socials: { facebook: 'https://www.facebook.com/arsblessing/', instagram: 'https://www.instagram.com/autorepuestosblessing/', tiktok: 'https://www.tiktok.com/@autorepuestosblessing', whatsapp: 'https://wa.me/50492507107' },
   },
   {
-    name: 'Tecnicentro DIDASA', slug: 'tecnicentro-didasa', type: 'Instalación y servicio · B2C', logo: B + 'logos/didasa.jpg', website: 'https://tecdidasa.com',
-    text: 'Mantenimiento, reparación, instalación y venta de autopartes con técnicos profesionales.',
-    description: 'Tecnicentro y Repuestos DIDASA es un centro integral de mantenimiento, reparación, instalación y venta de autopartes.',
-    highlightsTitle: 'Nos distingue',
-    highlights: ['Servicio accesible y confiable', 'Compromiso con cada cliente', 'Técnicos profesionales', 'Atención garantizada'],
-    infrastructure: [['3', 'Talleres'], ['10', 'Técnicos altamente capacitados']],
-    mission: 'Transformar la experiencia automotriz mediante un servicio integral, de calidad garantizada y atención oportuna.',
+    name: 'Tecnicentro DIDASA', slug: 'tecnicentro-didasa', cta: 'Consultar servicio y cita', unit: 'Repuestos y taller', coverage: 'Atención en taller · Anillo Periférico, Villa Nueva', type: 'Instalación y servicio · B2C', logo: B + 'logos/didasa.jpg', website: 'https://tecdidasa.com',
+    text: 'Mantenimiento, reparación y venta de autopartes.',
+    description: 'Mantenimiento, reparación y venta de autopartes. Consulte el servicio que necesita y coordine la atención de su vehículo.',
+    highlightsTitle: 'Qué ofrecemos',
+    highlights: ['Servicio accesible', 'Compromiso con cada cliente', 'Técnicos profesionales', 'Seguimiento a cada servicio'],
+    infrastructure: [['10', 'Técnicos capacitados']],
+    mission: 'Transformar la experiencia automotriz mediante un servicio integral, de calidad y atención oportuna.',
     vision: 'Ser el centro automotriz preferido por su calidad, accesibilidad e innovación en servicios.',
     listTitle: 'Servicios principales',
-    list: ['Cambio de lubricantes y fluidos', 'Cambio de pastillas y zapatas', 'Rectificado de discos y tambores', 'Cambio de clutch', 'Alineamiento y balanceo', 'Limpieza de inyectores', 'Diagnóstico electrónico', 'Mecánica general', 'Carga de A/C', 'Sistema de enfriamiento', 'Rectificado de muñones'],
+    list: ['Cambio de lubricantes y fluidos', 'Cambio de pastillas y zapatas', 'Rectificado de discos y tambores', 'Cambio de embrague (clutch)', 'Alineamiento y balanceo', 'Limpieza de inyectores', 'Diagnóstico electrónico', 'Mecánica general', 'Servicio de aire acondicionado', 'Mantenimiento del sistema de enfriamiento', 'Rectificado de muñones'],
     contact: { address: 'Anillo Periférico, Villa Nueva (100 m antes del puente peatonal)', phone: '8944-9954', email: 'gerencia@tecdidasa.co' },
     socials: { facebook: 'https://www.facebook.com/tecnicentrodidasa1', instagram: 'https://www.instagram.com/tecnicentro_didasa/', tiktok: 'https://www.tiktok.com/@didasahn' },
   },
   {
-    name: 'Japan HN', slug: 'japan-hn', type: 'Repuestos japoneses · B2B', logo: B + 'logos/japan-hn.jpg', website: 'https://www.japanhn.com',
-    text: 'Calidad japonesa garantizada en marcas y piezas para el mercado hondureño.',
-    description: 'Japan HN es una empresa especializada en la importación y distribución de repuestos japoneses de alta calidad para el mercado hondureño.',
-    highlightsTitle: 'Nos caracteriza',
-    highlights: ['Calidad garantizada de marcas japonesas', 'Amplio catálogo de repuestos', 'Precios competitivos', 'Atención especializada B2B'],
+    name: 'Japan HN', slug: 'japan-hn', cta: 'Solicitar catálogo mayorista', unit: 'Mayoristas', coverage: 'Distribución para el mercado hondureño', type: 'Repuestos japoneses · B2B', logo: B + 'logos/japan-hn.jpg', website: 'https://www.japanhn.com',
+    text: 'Repuestos para vehículos de marcas japonesas.',
+    description: 'Importación y distribución de repuestos para vehículos de marcas japonesas. Consulte el catálogo y la atención para su negocio.',
+    highlightsTitle: 'Qué ofrecemos',
+    highlights: ['Repuestos para marcas japonesas', 'Catálogo de repuestos por marca', 'Atención especializada B2B'],
     infrastructure: [['1', 'Bodega principal'], ['4', 'Vendedores especializados']],
-    mission: 'Ser el distribuidor líder de repuestos japoneses en Honduras, ofreciendo productos de calidad garantizada y servicios de excelencia a nuestros clientes.',
-    vision: 'Consolidarnos como la opción preferida para repuestos japoneses, reconocidos por confiabilidad, variedad y atención al cliente.',
-    listTitle: 'Marcas principales',
+    mission: 'Ser un distribuidor de repuestos japoneses en Honduras, ofreciendo productos de calidad y servicios de atención especializada a nuestros clientes.',
+    vision: 'Consolidarnos como la opción preferida para repuestos japoneses, orientados a la confiabilidad, la variedad y la atención al cliente.',
+    listTitle: 'Aplicaciones por marca',
     list: ['Toyota', 'Honda', 'Nissan', 'Mitsubishi', 'Mazda', 'Isuzu', 'Daihatsu'],
-    contact: { address: 'Barrio Guacerique, Bulevar Comunidad Europea, frente a Plaza Aire Frío, Tegucigalpa, Honduras', phone: '9452-5175', email: 'ventas@japanhn.com' },
+    contact: { address: 'Barrio Guacerique, bulevar Comunidad Económica Europea, frente a Plaza Aire Frío, Tegucigalpa.', phone: '9452-5175', email: 'ventas@japanhn.com' },
     socials: { facebook: 'https://www.facebook.com/rjapanhn/', instagram: 'https://www.instagram.com/japanhn_/', tiktok: 'https://www.tiktok.com/@japan.hn' },
   },
-  { name: 'CAP Logistics', slug: 'cap-logistics', type: 'Logística especializada', logo: B + 'logos/cap.png', text: 'La cadena de suministro del grupo, conectando cada punto con eficiencia.', contact: { address: 'Bulevar Comunidad Económica Europea, frente a Plaza Aire Frío', email: 'grupocap@cap.hn' },
+  { name: 'CAP Logistics', slug: 'cap-logistics', cta: 'Consultar alcance del servicio', unit: 'Otros servicios', coverage: 'Transporte entre países', type: 'Transporte de carga', logo: B + 'logos/cap.png', text: 'Empresa de transporte de carga con cabezales que mueve producto entre países.', contact: { address: 'Bulevar Comunidad Económica Europea, frente a Plaza Aire Frío', email: 'grupocap@cap.hn' },
     // CAP Logistics no tiene redes propias: usa las de Grupo CAP.
     socials: { facebook: contact.facebook, instagram: contact.instagram, tiktok: contact.tiktok, whatsapp: contact.whatsapp },
   },
   {
-    name: 'Soluciones Marlons', slug: 'soluciones-marlons', type: 'Renta de maquinaria pesada', logo: B + 'logos/marlon.png', website: 'https://solucionesmarlons.com',
-    text: 'Soluciones Marlons: renta de equipo amarillo para excavación, carga y compactación en proyectos de construcción.',
-    description: 'Soluciones Marlons ofrece maquinaria y soluciones operativas: renta de equipo amarillo en Honduras para apertura de terreno, movimiento de material y preparación de bases en obra.',
+    name: 'Soluciones Marlons', slug: 'soluciones-marlons', cta: 'Cotizar equipo para mi proyecto', unit: 'Otros servicios', coverage: 'Renta de equipo para obras en Honduras', type: 'Renta de maquinaria pesada', logo: B + 'logos/marlon.png', website: 'https://solucionesmarlons.com',
+    text: 'Renta de maquinaria pesada en Honduras para excavación y movimiento de material.',
+    description: 'Renta de maquinaria pesada en Honduras para excavación, movimiento de material y preparación de terreno. Consulte los equipos y condiciones disponibles para su proyecto.',
     highlightsTitle: 'Servicios',
     highlights: ['Renta para excavación: apertura de terreno, zanjeo y nivelación', 'Movimiento de material: carga y traslado en frentes de trabajo', 'Preparación de base: compactación de rellenos, accesos y superficies', 'Apoyo a proyectos especiales'],
-    listTitle: 'Equipos disponibles',
+    listTitle: 'Equipos (disponibilidad se confirma en cada cotización)',
     list: ['Miniexcavadora', 'Excavadora mediana', 'Excavadora de mayor capacidad', 'Tractor', 'Equipo de compactación'],
     contact: { phone: '9408-4995', email: 'gerencia@solucionesmarlons.com' },
     socials: { whatsapp: 'https://wa.me/50494084995' },
   },
+]
+
+// Cifras de operación mostradas en la portada. Confirmar fecha de corte y fuente antes de publicar.
+// Etapas de la cadena que cubre el grupo (sección Ecosistema integral).
+// Tarjetas de la sección "Por qué Grupo CAP". Cobertura y vendedores en ruta pendientes de validación.
+// Tarjetas "¿Cómo podemos ayudarte?" por tipo de cliente. Algunas frases requieren validación antes de publicar.
+export const solutionCards = [
+  { title: 'Talleres y distribuidores', text: 'Abastecimiento mayorista con precios competitivos y atención de vendedores especializados.', items: ['Autopartes y repuestos japoneses', 'Lubricantes y fluidos', 'Entregas en ruta'], cta: 'Solicitar asesor', requestType: 'Cliente o taller' },
+  { title: 'Flotas corporativas', text: 'Mantenimiento preventivo y correctivo con repuesto incluido para mantener tus unidades en ruta.', items: ['Diagnóstico electrónico', 'Frenos, suspensión y clutch', 'Mecánica general'], cta: 'Cotizar para mi flota', requestType: 'Flota corporativa' },
+  { title: 'Instituciones públicas', text: 'Suministro de repuestos y servicios de mantenimiento vehicular para entidades del Estado.', items: ['Cotizaciones formales', 'Repuesto y servicio en una oferta', 'Atención de procesos de compra'], cta: 'Contactar al equipo institucional', requestType: 'Institución pública' },
+  { title: 'Proveedores y alianzas', text: 'Buscamos marcas y socios que compartan nuestro estándar de calidad y visión de crecimiento.', items: ['Representación de marcas', 'Distribución nacional', 'Proyectos conjuntos'], cta: 'Proponer una alianza', requestType: 'Proveedor o marca' },
+];
+
+// Fotos de la sección "Operación real". Leyendas y fotos a confirmar por Marketing.
+export const operationPhotos = [
+  { src: B + 'images/centro-operaciones-cap.webp', caption: 'Centro de operaciones', position: '50% 40%', layout: 'feature' },
+  { src: B + 'images/intro/tecnicentro-didasa.jpg', caption: 'Taller de servicio', position: '50% 40%' },
+  { src: B + 'images/procesos/mostrador.jpg', caption: 'Venta al detalle', position: '50% 50%' },
+  { src: B + 'images/intro/inversiones-sm.jpg', caption: 'Distribución', position: '50% 40%' },
+  { src: B + 'images/bodega-mansiago.webp', caption: 'Bodega', position: '50% 40%' },
+  { src: B + 'images/intro/japan-hn.jpg', caption: 'Personal calificado', position: '50% 40%' },
+]
+
+export const whyCards = [
+  ['Portafolio completo', 'Autopartes, repuestos japoneses, lubricantes, filtros y baterías para múltiples marcas.'],
+  ['Repuesto + servicio', 'Compra la pieza y resuelve la instalación en nuestros talleres, con técnicos capacitados.'],
+  ['Cobertura nacional', 'Vendedores en ruta y logística propia para abastecer a tiempo en todo el país.'],
+  ['Gestión corporativa', 'Finanzas, compras, legal y talento centralizados: procesos ordenados y trazables.'],
+]
+
+export const ecosystemSteps = [
+  ['Importación', 'Inversiones S&M · Japan HN'],
+  ['Distribución', 'Inversiones S&M · Distribuidora Mansiago'],
+  ['Venta al detalle', 'Auto Repuestos Blessing'],
+  ['Instalación y servicio', 'Tecnicentro DIDASA'],
+  ['Logística', 'CAP Logistics'],
+  ['Maquinaria', 'Soluciones Marlons'],
+]
+
+export const operationTotals = [
+  ['Almacenes', 4],
+  ['Vendedores', 28],
+  ['Talleres', 2],
+  ['Tiendas', 2],
 ]
 
 export const stats = [
@@ -137,24 +178,46 @@ export const downloads = [
 export const pillars = [
   ['Sostenibilidad financiera', 'Crecimiento rentable y una gestión estratégica de recursos que fortalece cada decisión.'],
   ['Expansión comercial', 'Más presencia, mejores alianzas y un portafolio que llega donde el mercado lo necesita.'],
-  ['Excelencia operativa', 'Procesos precisos para lograr la calidad y los tiempos de respuesta que nos diferencian.'],
+  ['Excelencia operativa', 'Procesos ordenados para atender cada solicitud con calidad.'],
   ['Experiencia del cliente', 'Cada contacto cuenta: escuchamos, resolvemos y construimos relaciones duraderas.'],
-  ['Transformación digital', 'Tecnología e innovación para modernizar operaciones y liderar el sector.'],
+  ['Transformación digital', 'Tecnología e innovación para modernizar operaciones y contribuir al desarrollo del sector.'],
 ]
 
 export const processes = [
   { title: 'Venta B2B', phone: '9210-9620', channel: 'Talleres, distribuidores y flotillas', image: B + 'images/procesos/venta-b2b.jpg', steps: ['Visita del asesor', 'Levantamiento de pedido', 'Confirmación', 'Entrega', 'Facturación'] },
   { title: 'Compra en mostrador', phone: '9250-7107', channel: 'Cliente final · B2C', image: B + 'images/procesos/mostrador.jpg', steps: ['Atención personalizada', 'Pago en caja', 'Soporte postventa'] },
-  { title: 'Entrega a domicilio', phone: '9250-7107', channel: 'Pedidos hasta tu puerta', image: B + 'images/procesos/entrega.jpg', steps: ['Confirmación de pedido', 'Elección del método de pago', 'Entrega', 'Factura'] },
+  { title: 'Entrega a domicilio', phone: '9250-7107', channel: 'Pedidos hasta su puerta', image: B + 'images/procesos/entrega.jpg', steps: ['Confirmación de pedido', 'Elección del método de pago', 'Entrega', 'Factura'] },
   { title: 'Devoluciones', channel: 'Según la política vigente', image: B + 'images/procesos/devoluciones.jpg', reasons: ['Producto defectuoso', 'Error de pedido', 'Incompatibilidad'] },
 ]
 
+// Títulos y descripciones de búsqueda por página (sección 8 de la revisión).
+export const seo = {
+  home: ['Grupo CAP | Autopartes y servicio en Honduras', 'Conozca las empresas de Grupo CAP: autopartes al por mayor y al detalle, servicio automotriz y renta de maquinaria en Honduras.'],
+  about: ['Nosotros | Grupo CAP Honduras', 'Conozca Grupo CAP, su enfoque de gestión, sus empresas y los principios que orientan su trabajo en el sector automotriz de Honduras.'],
+  companies: {
+    'inversiones-sm': ['Inversiones S&M | Autopartes al por mayor en Honduras', 'Autopartes al por mayor para negocios en Honduras. Conozca Inversiones S&M y consulte su portafolio, cobertura y condiciones de atención.'],
+    'distribuidora-mansiago': ['Mansiago | Lubricantes y filtros al por mayor', 'Conozca Distribuidora Mansiago. Lubricantes, fluidos, filtros y autopartes al por mayor en Honduras. Consulte productos y atención comercial.'],
+    'auto-repuestos-blessing': ['Auto Repuestos Blessing | Repuestos en Tegucigalpa', 'Autopartes al detalle en Tegucigalpa. Consulte repuestos para su vehículo, ubicación y canales de atención de Auto Repuestos Blessing.'],
+    'tecnicentro-didasa': ['Tecnicentro DIDASA | Servicio automotriz en Honduras', 'Mantenimiento, reparación y autopartes. Conozca Tecnicentro DIDASA y consulte servicios, ubicación y opciones para atender su vehículo.'],
+    'japan-hn': ['Japan HN | Repuestos para vehículos japoneses', 'Conozca Japan HN y su oferta de repuestos para vehículos de marcas japonesas. Consulte catálogo y atención comercial en Honduras.'],
+    'cap-logistics': ['CAP Logistics | Operación logística de Grupo CAP', 'Conozca CAP Logistics, empresa de transporte de carga con cabezales que mueve producto entre países.'],
+    'soluciones-marlons': ['Soluciones Marlons | Renta de maquinaria en Honduras', 'Renta de maquinaria pesada para excavación y movimiento de material. Consulte equipos y condiciones para su proyecto con Soluciones Marlons.'],
+  },
+}
+
+// Oculta la línea de tiempo hasta validar fechas y hechos (hallazgos 12.8 a 12.11).
+export const showTimeline = true
+
+// Misión y visión por empresa: no aprobadas aún por Gerencia (hallazgos A14 a A18). Oculta hasta confirmar la versión institucional.
+export const showCompanyMissionVision = false
+
+// Hitos por año. Años entregados por Gerencia; las frases son neutras y deben revisarse antes de publicar.
 export const milestones = [
-  ['2018', 'Fundación', 'Nace Grupo Empresarial CAP con la visión de consolidar el sector automotriz hondureño.', [['Grupo CAP', B + 'logos/cap.png']]],
-  ['2021', 'Expansión B2B', 'Inversiones S&M y Distribuidora Mansiago inician operaciones a nivel nacional.', [['Inversiones S&M', B + 'logos/sym.jpg'], ['Distribuidora Mansiago', B + 'logos/mansiago.jpg']]],
-  ['2022', 'Canal B2C', 'Auto Repuestos Blessing abre sus puertas al público con tiendas de venta al detalle.', [['Auto Repuestos Blessing', B + 'logos/blessing.png']]],
-  ['2025', 'Servicios', 'Tecnicentro DIDASA se incorpora al grupo con talleres de instalación y mantenimiento.', [['Tecnicentro DIDASA', B + 'logos/didasa.jpg']]],
-  ['2026', 'Consolidación', 'Más empresas, más talento y cobertura nacional completa.', [['Grupo CAP', B + 'logos/cap.png']]],
+  ['2013', 'Auto Repuestos Blessing', 'Se integra al grupo.', [['Auto Repuestos Blessing', B + 'logos/blessing.png']]],
+  ['2019', 'Inversiones S&M', 'Se integra al grupo.', [['Inversiones S&M', B + 'logos/sym.jpg']]],
+  ['2020', 'Tecnicentro DIDASA', 'Se integra al grupo.', [['Tecnicentro DIDASA', B + 'logos/didasa.jpg']]],
+  ['2025', 'Distribuidora Mansiago y CAP Logistics', 'Se integran al grupo.', [['Distribuidora Mansiago', B + 'logos/mansiago.jpg'], ['CAP Logistics', B + 'logos/cap.png']]],
+  ['2026', 'Japan HN y Grupo CAP', 'Japan HN se integra al grupo y Grupo CAP consolida el conglomerado.', [['Japan HN', B + 'logos/japan-hn.jpg'], ['Grupo CAP', B + 'logos/cap.png']]],
 ]
 
 export const gallery = [
@@ -166,10 +229,10 @@ export const gallery = [
 
 export const zones = [
   // x/y son la posición geográfica real de cada ciudad proyectada sobre la silueta del mapa.
-  { city: 'Tegucigalpa', text: 'Sede corporativa, bodegas, tiendas y talleres', x: 37.8, y: 65.1, hub: true },
-  { city: 'San Pedro Sula', text: 'Cobertura comercial y distribución', x: 27.3, y: 32.2 },
-  { city: 'La Ceiba', text: 'Atención a la costa norte', x: 43.1, y: 26.2 },
-  { city: 'Comayagua', text: 'Distribución en la zona central', x: 32.3, y: 56.3, side: 'left' },
-  { city: 'Choluteca', text: 'Cobertura en la zona sur', x: 38, y: 82.8 },
-  { city: 'Olancho', text: 'Atención al oriente del país', x: 50.4, y: 51.5, side: 'left' },
+  { city: 'Tegucigalpa', text: 'Sede corporativa, bodegas, tiendas y talleres', x: 34.8, y: 64.1, hub: true },
+  { city: 'San Pedro Sula', text: 'Cobertura comercial y distribución', x: 21.3, y: 17.1 },
+  { city: 'La Ceiba', text: 'Atención a la costa norte', x: 41.1, y: 8.6 },
+  { city: 'Comayagua', text: 'Distribución en la zona central', x: 27.6, y: 51.6, side: 'left' },
+  { city: 'Choluteca', text: 'Cobertura en la zona sur', x: 34.8, y: 89.5 },
+  { city: 'Olancho', text: 'Atención al oriente del país', x: 50.5, y: 44.7, side: 'left' },
 ]
