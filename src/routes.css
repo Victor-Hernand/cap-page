@@ -188,7 +188,7 @@
 .why-inner { width: min(1180px, calc(100% - 2 * var(--gutter))); margin: 0 auto; }
 .why-eyebrow { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 18px; color: #fff; font: 700 12px var(--sans); letter-spacing: 1.8px; text-transform: uppercase; }
 .why-eyebrow:before { content: ''; width: 28px; height: 1px; background: #fff; }
-.why-head { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: end; gap: 40px; margin-bottom: 48px; }
+.why-head { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); align-items: end; gap: 40px; margin-bottom: 24px; }
 .why-head h2 { margin: 0; color: #fff; }
 .why-head h2 em { color: #fff; }
 .why-head p { margin: 0; color: rgba(255, 255, 255, .72); font-size: 16px; line-height: 1.7; }
