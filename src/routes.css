@@ -92,7 +92,7 @@
 
 /* Tarjetas de empresas (fondo claro) */
 .company-filters { margin-bottom: 28px; }
-.company-cards { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
+.company-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
 .company-card { position: relative; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--line); background: #fff; animation: company-card-in .6s cubic-bezier(.2, .7, .2, 1) backwards; animation-delay: calc(var(--i, 0) * 70ms); transition: border-color .3s, box-shadow .3s, transform .3s; }
 .company-card:before { content: ''; position: absolute; inset: 0 0 auto; z-index: 1; height: 3px; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
 .company-card:hover { border-color: var(--red); box-shadow: 0 24px 40px -28px rgba(0, 0, 0, .5); transform: translateY(-4px); }
