@@ -413,7 +413,7 @@ button.solution-link { background: none; border: 0; padding: 0; cursor: pointer;
 
 /* Espacio entre zonas y soluciones */
 .zones-section { padding-bottom: 40px; }
-.solutions { padding-top: 40px; }
+.solutions { padding-top: 0; }
 .why { padding-bottom: 48px; }
 .zones-section { padding-top: 48px; }
 #contacto { scroll-margin-top: 80px; }

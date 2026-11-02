@@ -1050,7 +1050,7 @@ function HomePage() {
         </section>
 
 
-        <section className="section" style={{ paddingTop: 0 }}>
+        <section className="section" style={{ paddingTop: 0, paddingBottom: 48 }}>
           <div id="talento" className="careers reveal" style={{ marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', backgroundImage: `linear-gradient(rgba(150, 12, 18, .8), rgba(150, 12, 18, .8)), url(${B}images/talento-fondo-cap.webp)` }}>
             <div className="careers-inner">
               <div className="careers-copy">
