@@ -933,7 +933,7 @@ function HomePage() {
         <section className="hero" id="inicio">
           <div className="hero-content">
             <div className="eyebrow-spacer" />
-            <h1><Words>Impulsamos la <em>movilidad</em><br />que mueve el progreso.</Words></h1>
+            <h1><Words><em>Crecer</em> y ayudar a crecer a quienes hacen posible nuestra historia.</Words></h1>
             <p className="hero-byline">Grupo Empresarial CAP Honduras</p>
           </div>
         </section>
