@@ -614,11 +614,9 @@ function CompanyPage({ company }) {
               <p className="detail-type">{company.type}</p>
               {!company.description && <p style={{ fontWeight: 600 }}>{company.text}</p>}
               <div className="hero-actions">
-                {company.website && <a className="button button-red" href={company.website} {...external}>Visitar sitio oficial <span aria-hidden="true">↗</span></a>}
-                {company.contact?.phone
-                  ? <a className="button button-ghost" href={telHref(company.contact.phone)}>Llamar {company.contact.phone} <span aria-hidden="true">↗</span></a>
-                  : <a className="button button-ghost" href={contact.whatsapp} {...external}>Contactar <span aria-hidden="true">↗</span></a>}
-                {company.contact?.email && company.cta && <a className="button button-outline" href={`mailto:${company.contact.email}?subject=${encodeURIComponent(`Consulta sobre ${company.name}`)}`}>{company.cta}</a>}
+                {company.website && <a className="button button-dark" href={company.website} {...external}>Visitar sitio oficial <span aria-hidden="true">↗</span></a>}
+                {company.contact?.email && <a className="button button-red" href={`mailto:${company.contact.email}?subject=${encodeURIComponent(`Cotización - ${company.name}`)}`}>Cotizar por correo <span aria-hidden="true">↗</span></a>}
+                {company.socials?.whatsapp && <a className="button button-red" href={company.socials.whatsapp} {...external}>Cotizar por WhatsApp <span aria-hidden="true">↗</span></a>}
               </div>
               {company.socials && <div className="detail-social"><span className="mini-label">Síganos</span><SocialLinks className="is-dark" links={company.socials} owner={company.name} networks={companySocials} email={null} /></div>}
             </div>
@@ -667,7 +665,7 @@ function CompanyPage({ company }) {
                 <p className="contact-meta"><a href={telHref(company.contact.phone)}>Tel. {company.contact.phone}</a><a href={`mailto:${company.contact.email}`}>{company.contact.email.split('@')[0]}@<wbr />{company.contact.email.split('@')[1]}</a></p>
               </div>
               {company.contact.address
-                ? <a className="button button-light" href={mapsHref(company.contact.address)} {...external}>Cómo llegar <span aria-hidden="true">↗</span></a>
+                ? <a className="button button-light" href={company.contact.mapsUrl ?? mapsHref(company.contact.address)} {...external}>Cómo llegar <span aria-hidden="true">↗</span></a>
                 : <a className="button button-light" href={company.website} {...external}>Visitar sitio <span aria-hidden="true">↗</span></a>}
             </div>
           </section>

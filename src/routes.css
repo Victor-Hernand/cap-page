@@ -27,9 +27,9 @@
 .check-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; margin: 0; padding: 0; list-style: none; }
 .check-list li { position: relative; padding-left: 26px; font-size: 15px; line-height: 1.5; }
 .check-list li:before { content: '✓'; position: absolute; left: 0; color: var(--red); font-weight: 700; }
-.infra-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
-.infra-cards li { padding: 26px 22px; background: var(--paper); border-top: 3px solid var(--red); }
-.infra-cards strong { display: block; color: var(--red); font-size: 52px; font-weight: 500; line-height: 1; letter-spacing: -.04em; }
+.infra-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 0; padding: 0; list-style: none; }
+.infra-cards li { min-width: 0; padding: 24px 20px; background: var(--paper); border-top: 3px solid var(--red); }
+.infra-cards strong { display: block; color: var(--red); font-size: clamp(24px, 2.4vw, 36px); font-weight: 500; line-height: 1.1; letter-spacing: -.03em; overflow-wrap: anywhere; }
 .infra-cards span { display: block; margin-top: 12px; color: var(--muted); font-size: 14px; line-height: 1.4; }
 .detail-list { margin-top: 32px; }
 .detail-list .tag-list li { padding: 12px 14px; font-size: 13px; }
@@ -48,8 +48,12 @@
 .others-grid .arrow { color: var(--red); font-size: 20px; }
 .detail-cta .display { margin: 24px 0; }
 .detail-cta p { max-width: 440px; margin: 0 0 34px; color: var(--dark-muted); font-size: 16px; line-height: 1.7; }
-.detail-hero .hero-actions .button { min-height: 56px; font-size: 13px; padding: 0 28px; box-shadow: 0 12px 24px rgba(178, 30, 37, 0.25); color: #fff !important; background: var(--red) !important; border-color: var(--red) !important; }
-.detail-hero .hero-actions .button:hover { background: var(--red-dark) !important; border-color: var(--red-dark) !important; }
+.detail-hero .hero-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 12px; }
+.detail-hero .hero-actions .button { min-height: 56px; font-size: 13px; padding: 0 22px; gap: 14px; white-space: nowrap; }
+.detail-hero .hero-actions .button-red { color: #fff; background: var(--red); border-color: var(--red); }
+.detail-hero .hero-actions .button-red:hover { background: var(--red-dark); border-color: var(--red-dark); }
+.detail-hero .hero-actions .button-dark { color: #fff; background: var(--charcoal); border-color: var(--charcoal); }
+.detail-hero .hero-actions .button-dark:hover { background: var(--ink); border-color: var(--ink); }
 .detail-social { color: #000; }
 .detail-social .mini-label { color: #000; }
 .detail-social .social-links a { color: var(--red); }
