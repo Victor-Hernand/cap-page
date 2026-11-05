@@ -3,7 +3,7 @@ const B = import.meta.env?.BASE_URL ?? '/'
 export const contact = {
   city: 'Tegucigalpa, Honduras',
   address: 'Bulevar Comunidad Económica Europea, frente a Plaza Aire Frío, Tegucigalpa, Honduras',
-  mapQuery: 'Plaza Aire Frío, Bulevar Comunidad Económica Europea, Tegucigalpa',
+  mapsUrl: 'https://www.google.com/maps/place/TECNICENTRO+DIDASA+SUCURSAL+LA+GRANJA/@14.0863355,-87.2106954,19z/data=!3m1!4b1!4m6!3m5!1s0x8f6fa30f7abfb8b1:0xc1a28e7f29b80cfb!8m2!3d14.0863342!4d-87.2094777!16s%2Fg%2F11wn78j55c?entry=ttu&g_ep=EgoyMDI2MTEwMi4wIKXMDSoASAFQAw%3D%3D',
   phone: '+504 3156-6090',
   phoneHref: '+50431566090',
   email: 'grupocap@cap.hn',
@@ -80,7 +80,7 @@ export const companies = [
     socials: { facebook: 'https://www.facebook.com/arsblessing/', instagram: 'https://www.instagram.com/autorepuestosblessing/', tiktok: 'https://www.tiktok.com/@autorepuestosblessing', whatsapp: 'https://wa.me/50492507107' },
   },
   {
-    name: 'Tecnicentro DIDASA', slug: 'tecnicentro-didasa', cta: 'Consultar servicio y cita', unit: 'Repuestos y taller', coverage: 'Atención en taller · Anillo Periférico, Villa Nueva', type: 'Instalación y servicio · B2C', logo: B + 'logos/didasa.jpg', website: 'https://tecdidasa.com',
+    name: 'Tecnicentro DIDASA', slug: 'tecnicentro-didasa', cta: 'Consultar servicio y cita', unit: 'Repuestos y taller', coverage: 'Atención en taller · Sucursal La Granja, Tegucigalpa', type: 'Instalación y servicio · B2C', logo: B + 'logos/didasa.jpg', website: 'https://tecdidasa.com',
     text: 'Mantenimiento, reparación y venta de autopartes.',
     description: 'Tecnicentro DIDASA es un centro de servicio automotriz integral, especializado en mantenimiento, reparación e instalación de autopartes. Nos distinguimos por nuestra tecnología avanzada, técnicos profesionales y atención personalizada.',
     highlightsTitle: 'Qué ofrecemos',
@@ -90,7 +90,7 @@ export const companies = [
     vision: 'Ser el centro de servicio automotriz de referencia en el Distrito Central, destacando por la excelencia, innovación y compromiso con la satisfacción del cliente.',
     listTitle: 'Servicios principales',
     list: ['Cambio de lubricantes, fluidos y filtros', 'Diagnósticos mecánicos', 'Frenos, dirección y suspensión', 'Alineamiento y balanceo', 'Flush y aditivos', 'Limpieza de inyectores', 'Enderezado y pintura', 'Cambio de pastillas y zapatas', 'Rectificado de discos y tambores', 'Cambio de embrague (clutch)', 'Servicio de aire acondicionado', 'Mantenimiento del sistema de enfriamiento', 'Rectificado de muñones'],
-    contact: { address: 'Anillo Periférico, Villa Nueva (100 m antes del puente peatonal)', phone: '2213-0345', email: 'tecdidasa@gmail.com', mapsUrl: 'https://www.google.com/maps/place/TECNICENTRO+DIDASA+S.+DE+R.L.+SUCURSAL+ANILLO+PERIF%C3%89RICO/@14.060727,-87.1937933,15z/data=!4m10!1m2!2m1!1sDIDASA!3m6!1s0x8f6fbddd5947db81:0x501913109eb69121!8m2!3d14.060727!4d-87.1747389!15sCgZESURBU0FaCCIGZGlkYXNhkgEKY2FyX3JlcGFpcpoBI0NoWkRTVWhOTUc5blMwVkpRMEZuU1VNdE5HTjVWR0puRUFF4AEA-gEECBIQRw!16s%2Fg%2F11jpbg4dgc?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D' },
+    contact: { address: 'Bulevar Comunidad Económica Europea, frente a Plaza Aire Frío, Tegucigalpa, Honduras', phone: '2213-0345', email: 'tecdidasa@gmail.com', mapsUrl: 'https://www.google.com/maps/place/TECNICENTRO+DIDASA+SUCURSAL+LA+GRANJA/@14.0863355,-87.2106954,19z/data=!3m1!4b1!4m6!3m5!1s0x8f6fa30f7abfb8b1:0xc1a28e7f29b80cfb!8m2!3d14.0863342!4d-87.2094777!16s%2Fg%2F11wn78j55c?entry=ttu&g_ep=EgoyMDI2MTEwMi4wIKXMDSoASAFQAw%3D%3D' },
     socials: { facebook: 'https://www.facebook.com/tecnicentrodidasa1', instagram: 'https://www.instagram.com/tecnicentro_didasa/', tiktok: 'https://www.tiktok.com/@tecnicentrodidasa' },
   },
   {
