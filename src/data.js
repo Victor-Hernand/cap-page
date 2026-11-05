@@ -10,7 +10,7 @@ export const contact = {
   hours: 'Lunes a viernes · 8:00 AM — 5:00 PM',
   whatsapp: 'https://wa.me/50431566090',
   instagram: 'https://www.instagram.com/grupoempresarialcap/',
-  facebook: 'https://www.facebook.com/invrcastro/',
+  facebook: 'https://www.facebook.com/grupoempresarialcap',
   tiktok: 'https://www.tiktok.com/@capgrupo',
   recruit: 'https://recruit.capgrupo.com/aplicar',
   linkedin: 'https://www.linkedin.com/company/caphn/posts/?feedView=all',
