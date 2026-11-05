@@ -60,7 +60,6 @@ export const privacyPolicy = {
     ] },
     { title: '6. Cookies y almacenamiento en su navegador', body: [
       'El sitio público no usa cookies publicitarias ni de seguimiento de terceros. El navegador guarda en su equipo, solo para la experiencia de navegación, si ya vio la presentación inicial y qué empresa o filtro tenía seleccionado en el explorador. Estos datos no se envían a nuestros servidores y se borran al cerrar la pestaña.',
-      'Analítica: [confirmar si se activará. Si se incorpora, esta sección debe actualizarse antes de hacerlo.]',
       'Puede borrar o bloquear las cookies desde la configuración de su navegador.',
     ] },
     { title: '7. Servicios de terceros', body: [
@@ -79,7 +78,7 @@ export const privacyPolicy = {
       'Si ocurriera un incidente de seguridad que afecte sus datos, le informaremos en un plazo máximo de 72 horas desde que lo confirmemos, indicando el alcance y las medidas tomadas.',
     ] },
     { title: '10. Plazo de conservación', body: [
-      'Postulaciones y currículums de candidatos no contratados: 12 meses desde la aplicación, para considerarlos en vacantes futuras. Después se eliminan, salvo que pida antes su cancelación. [RR. HH.: confirmar este plazo.]',
+      'Postulaciones y currículums de candidatos no contratados: 12 meses desde la aplicación, para considerarlos en vacantes futuras. Después se eliminan, salvo que pida antes su cancelación.',
       'Candidatos contratados: su expediente pasa al archivo laboral y se conserva según la legislación laboral hondureña.',
       'Solicitudes de información: 12 meses después de resolverlas.',
       'Registro de aceptación del aviso: mientras se conserve la postulación o solicitud asociada.',

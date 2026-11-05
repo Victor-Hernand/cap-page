@@ -571,6 +571,18 @@ function BackToTop({ home = true }) {
 function Footer({ home = true }) {
   return (
     <footer className="footer">
+      <a
+        className="footer-top"
+        href={home ? '#inicio' : `${B}?intro`}
+        aria-label="Subir al inicio"
+        onClick={(event) => {
+          if (!home) return
+          event.preventDefault()
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        }}
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
+      </a>
       <div className="footer-inner wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <img src={B + 'logos/cap-blanco.png'} alt="Grupo CAP" width="130" height="55" loading="lazy" />
         <ul className="social-links" style={{ gap: 24 }}>
@@ -614,11 +626,9 @@ function CompanyPage({ company }) {
               <p className="detail-type">{company.type}</p>
               {!company.description && <p style={{ fontWeight: 600 }}>{company.text}</p>}
               <div className="hero-actions">
-                {company.website && <a className="button button-red" href={company.website} {...external}>Visitar sitio oficial <span aria-hidden="true">↗</span></a>}
-                {company.contact?.phone
-                  ? <a className="button button-ghost" href={telHref(company.contact.phone)}>Llamar {company.contact.phone} <span aria-hidden="true">↗</span></a>
-                  : <a className="button button-ghost" href={contact.whatsapp} {...external}>Contactar <span aria-hidden="true">↗</span></a>}
-                {company.contact?.email && company.cta && <a className="button button-outline" href={`mailto:${company.contact.email}?subject=${encodeURIComponent(`Consulta sobre ${company.name}`)}`}>{company.cta}</a>}
+                {company.website && <a className="button button-dark" href={company.website} {...external}>Visitar sitio oficial <span aria-hidden="true">↗</span></a>}
+                {company.contact?.email && <a className="button button-red" href={`mailto:${company.contact.email}?subject=${encodeURIComponent(`Cotización - ${company.name}`)}`}>Cotizar por correo <span aria-hidden="true">↗</span></a>}
+                {company.socials?.whatsapp && <a className="button button-red" href={company.socials.whatsapp} {...external}>Cotizar por WhatsApp <span aria-hidden="true">↗</span></a>}
               </div>
               {company.socials && <div className="detail-social"><span className="mini-label">Síganos</span><SocialLinks className="is-dark" links={company.socials} owner={company.name} networks={companySocials} email={null} /></div>}
             </div>
@@ -634,7 +644,7 @@ function CompanyPage({ company }) {
         </section>
 
         {company.description && (
-          <section className="section wrap">
+          <section className="section wrap detail-profile-section">
             <div className={`detail-profile${company.infrastructure ? '' : ' is-single'}`}>
               <div className="reveal">
                 <p className="lead">{company.description}</p>
@@ -667,7 +677,7 @@ function CompanyPage({ company }) {
                 <p className="contact-meta"><a href={telHref(company.contact.phone)}>Tel. {company.contact.phone}</a><a href={`mailto:${company.contact.email}`}>{company.contact.email.split('@')[0]}@<wbr />{company.contact.email.split('@')[1]}</a></p>
               </div>
               {company.contact.address
-                ? <a className="button button-light" href={mapsHref(company.contact.address)} {...external}>Cómo llegar <span aria-hidden="true">↗</span></a>
+                ? <a className="button button-light" href={company.contact.mapsUrl ?? mapsHref(company.contact.address)} {...external}>Cómo llegar <span aria-hidden="true">↗</span></a>
                 : <a className="button button-light" href={company.website} {...external}>Visitar sitio <span aria-hidden="true">↗</span></a>}
             </div>
           </section>
@@ -1050,7 +1060,7 @@ function HomePage() {
         </section>
 
 
-        <section className="section" style={{ paddingTop: 0 }}>
+        <section className="section" style={{ paddingTop: 0, paddingBottom: 48 }}>
           <div id="talento" className="careers reveal" style={{ marginLeft: 'calc(-50vw + 50%)', marginRight: 'calc(-50vw + 50%)', backgroundImage: `linear-gradient(rgba(150, 12, 18, .8), rgba(150, 12, 18, .8)), url(${B}images/talento-fondo-cap.webp)` }}>
             <div className="careers-inner">
               <div className="careers-copy">
@@ -1068,8 +1078,8 @@ function HomePage() {
                 <p>Consulte los puestos disponibles en nuestro formulario de postulación y envíe su hoja de vida. Conozca más sobre nuestro equipo en LinkedIn.</p>
                 <div className="careers-actions">
                   <a className="button button-red" href={contact.recruit} {...external}>Enviar mi postulación <span aria-hidden="true">↗</span></a>
-                  <a className="button button-outline" href={contact.linkedin} {...external}>
-                    <svg className="careers-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" /><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7" /></svg>
+                  <a className="button button-outline button-linkedin" href={contact.linkedin} {...external}>
+                    <svg className="careers-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.3362 18.339H15.6707V14.1622C15.6707 13.1662 15.6505 11.8845 14.2817 11.8845C12.892 11.8845 12.6797 12.9683 12.6797 14.0887V18.339H10.0142V9.75H12.5747V10.9207H12.6092C12.967 10.2457 13.837 9.53325 15.1367 9.53325C17.8375 9.53325 18.337 11.3108 18.337 13.6245V18.339H18.3362ZM7.00373 8.57475C6.14573 8.57475 5.45648 7.88025 5.45648 7.026C5.45648 6.1725 6.14648 5.47875 7.00373 5.47875C7.85873 5.47875 8.55173 6.1725 8.55173 7.026C8.55173 7.88025 7.85798 8.57475 7.00373 8.57475ZM8.34023 18.339H5.66723V9.75H8.34023V18.339ZM19.6697 3H4.32923C3.59498 3 3.00098 3.5805 3.00098 4.29675V19.7033C3.00098 20.4202 3.59498 21 4.32923 21H19.6675C20.401 21 21.001 20.4202 21.001 19.7033V4.29675C21.001 3.5805 20.401 3 19.6675 3H19.6697Z" /></svg>
                     LinkedIn <span aria-hidden="true">↗</span>
                   </a>
                   <a className="legal-inline careers-legal" href={B + privacyNotice.slug}>Aviso de privacidad</a>
@@ -1096,7 +1106,7 @@ function HomePage() {
               <div><dt><span className="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" /></svg></span>Llámenos</dt><dd><a href={`tel:${contact.phoneHref}`}>{contact.phone}</a></dd></div>
               <div><dt><span className="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" /></svg></span>Escríbanos</dt><dd><a href={`mailto:${contact.email}`}>{contact.email.split('@')[0]}@<wbr />{contact.email.split('@')[1]}</a></dd></div>
               <div><dt><span className="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg></span>Horario</dt><dd>{contact.hours}</dd></div>
-              <div><dt><span className="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-5h6v5M9 10h.01M15 10h.01" /></svg></span>Dirección</dt><dd><a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.mapQuery)}`} {...external}>{contact.address}</a></dd></div>
+              <div><dt><span className="contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-5h6v5M9 10h.01M15 10h.01" /></svg></span>Dirección</dt><dd><a href={contact.mapsUrl} {...external}>{contact.address}</a></dd></div>
             </dl>
           </div>
           <div className="contact-request reveal">
