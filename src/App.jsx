@@ -627,8 +627,8 @@ function CompanyPage({ company }) {
               {!company.description && <p style={{ fontWeight: 600 }}>{company.text}</p>}
               <div className="hero-actions">
                 {company.website && <a className="button button-dark" href={company.website} {...external}>Visitar sitio oficial <span aria-hidden="true">↗</span></a>}
-                {company.contact?.email && <a className="button button-red" href={`mailto:${company.contact.email}?subject=${encodeURIComponent(`Cotización - ${company.name}`)}`}>Cotizar por correo <span aria-hidden="true">↗</span></a>}
-                {company.socials?.whatsapp && <a className="button button-red" href={company.socials.whatsapp} {...external}>Cotizar por WhatsApp <span aria-hidden="true">↗</span></a>}
+                {company.contact?.email && <a className="button button-red" href={`mailto:${company.contact.email}?subject=${encodeURIComponent(`Cotización - ${company.name}`)}`}>Contáctanos por correo <span aria-hidden="true">↗</span></a>}
+                {company.socials?.whatsapp && <a className="button button-red" href={company.socials.whatsapp} {...external}>Contáctanos por WhatsApp <span aria-hidden="true">↗</span></a>}
               </div>
               {company.socials && <div className="detail-social"><span className="mini-label">Síganos</span><SocialLinks className="is-dark" links={company.socials} owner={company.name} networks={companySocials} email={null} /></div>}
             </div>
@@ -647,7 +647,7 @@ function CompanyPage({ company }) {
           <section className="section wrap detail-profile-section">
             <div className={`detail-profile${company.infrastructure ? '' : ' is-single'}`}>
               <div className="reveal">
-                <p className="lead">{company.description}</p>
+                <p className="lead" style={{ textAlign: 'justify' }}>{company.description}</p>
                 <span className="mini-label">{company.highlightsTitle}</span>
                 <ul className="check-list">{company.highlights.map((item) => <li key={item}>{item}</li>)}</ul>
               </div>
@@ -1037,7 +1037,7 @@ function HomePage() {
             {solutionCards.map((card, index) => (
               <li key={card.title} className="solution-card reveal" style={{ transitionDelay: `${index * 0.1}s` }}>
                 <h3>{card.title}</h3>
-                <p>{card.text}</p>
+                <p style={{ textAlign: 'left' }}>{card.text}</p>
                 <ul className="solution-list">
                   {card.items.map((item) => <li key={item}>{item}</li>)}
                 </ul>
