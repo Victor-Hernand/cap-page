@@ -2,6 +2,8 @@
 // Texto corto para el pie de página del sitio público.
 export const footerNotice = "Aviso de privacidad. Grupo Empresarial CAP (Honduras) es responsable de los datos personales que recopila en este sitio. No usamos cookies publicitarias ni de terceros, y no vendemos ni cedemos sus datos a terceros, salvo a proveedores que operan el sitio bajo confidencialidad o por requerimiento legal. Puede ejercer sus derechos de acceso, rectificación, cancelación y oposición escribiendo a s.merci@cap.hn. Consulte la Política de Privacidad y Uso de Datos completa."
 
+import { companies } from './data.js'
+
 export const privacyNotice = {
   slug: 'aviso-de-privacidad',
   title: 'Aviso de privacidad',
@@ -9,6 +11,7 @@ export const privacyNotice = {
   sections: [
     { title: 'Para visitantes del sitio', body: [footerNotice] },
     { title: 'Para candidatos', body: ["Grupo Empresarial CAP (Honduras) recopila los datos que usted ingresa en este formulario y los de su currículum vitae con el único fin de evaluar su aplicación a las vacantes de las empresas del grupo y considerarlo para vacantes futuras. Sus datos serán vistos solo por Recursos Humanos y las jefaturas responsables de la vacante, y se registran en la plataforma de gestión de talento con la que trabajamos, bajo confidencialidad. Conservaremos su expediente por 12 meses; si es contratado, pasará a su expediente laboral. No incluya en su currículum datos sensibles (salud, religión, afiliación política); si lo hace, no se usarán para la selección. Puede solicitar acceso, corrección o eliminación de sus datos en cualquier momento escribiendo a s.merci@cap.hn. Al enviar este formulario acepta la Política de Privacidad y Uso de Datos de Grupo CAP."] },
+    { title: 'Empresas cubiertas', body: [`Este aviso aplica a todas las empresas del Grupo CAP: ${companies.map((company) => company.name).join(', ')}. Grupo Empresarial CAP actúa como Centro de Servicios Compartidos de estas empresas.`] },
     { title: 'Política completa', body: ['Consulte la Política de Privacidad y Uso de Datos de Grupo CAP, que explica con detalle qué datos recopilamos, con quién los compartimos, cuánto tiempo los conservamos y cómo ejercer sus derechos.'] },
   ],
   updated: '27 de octubre de 2026',
@@ -20,7 +23,7 @@ export const privacyPolicy = {
   intro: 'Esta política explica qué datos personales recopilamos a través de capgrupo.com y del portal de reclutamiento CAP Recruit, para qué los usamos, con quién los compartimos y cómo puede ejercer sus derechos.',
   sections: [
     { title: '1. Responsable y alcance', body: [
-      'Grupo Empresarial CAP es responsable de los datos personales recopilados a través del sitio capgrupo.com y del portal de reclutamiento CAP Recruit (recruit.capgrupo.com/aplicar), al que el sitio enlaza. Grupo CAP actúa como Centro de Servicios Compartidos de Inversiones S&M, Distribuidora Mansiago, Auto Repuestos Blessing y Tecnicentro DIDASA.',
+      'Grupo Empresarial CAP es responsable de los datos personales recopilados a través del sitio capgrupo.com y del portal de reclutamiento CAP Recruit (recruit.capgrupo.com/aplicar), al que el sitio enlaza. Grupo CAP actúa como Centro de Servicios Compartidos de Inversiones S&M, Distribuidora Mansiago, Japan HN, Auto Repuestos Blessing, Tecnicentro DIDASA, CAP Logistics y Soluciones Marlons.',
       'Razón social: Grupo Empresarial CAP. País: Honduras. Domicilio: Bulevar Comunidad Económica Europea, frente a Plaza Aire Frío, Tegucigalpa, Honduras.',
       'Responsable de la información de privacidad: Sharon Gisselle González, Jefa de Talento Humano y Legal. Correo: s.merci@cap.hn.',
       'Esta política aplica a los candidatos que envían su currículum desde el enlace «Trabaje con nosotros», a quienes envían una solicitud de información desde el sitio y a cualquier persona que nos escriba o use el sitio.',
