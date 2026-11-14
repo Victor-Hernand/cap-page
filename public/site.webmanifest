@@ -1,0 +1,12 @@
+{
+  "name": "Grupo Empresarial CAP",
+  "short_name": "Grupo CAP",
+  "lang": "es-HN",
+  "start_url": "/",
+  "display": "browser",
+  "theme_color": "#b01d25",
+  "background_color": "#ffffff",
+  "icons": [
+    { "src": "/favicon.png", "sizes": "256x256", "type": "image/png" }
+  ]
+}

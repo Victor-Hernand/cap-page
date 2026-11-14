@@ -1,19 +1,31 @@
-import { Children, cloneElement, isValidElement, useEffect, useRef, useState } from 'react'
+import { Children, cloneElement, isValidElement, lazy, Suspense, useEffect, useRef, useState } from 'react'
 import './App.css'
 import './routes.css'
 import { companies, contact, downloads, gallery, group, milestones, ecosystemSteps, operationPhotos, solutionCards, whyCards, operationTotals, pillars, processes, seo, showCompanyMissionVision, showTimeline, stats, zones } from './data'
 import MapaHonduras from './MapaHonduras'
 import mapaHonduras from './assets/mapa-honduras.png'
 import motorCap from './assets/motor-cap.webp'
-import { footerNotice, legalDraftNote, privacyNotice, privacyPolicy } from './legal'
+import { footerNotice, privacyNotice, privacyPolicy } from './legal'
+import { imageSizes } from './image-sizes'
+
+// Ancho y alto reales de una imagen del sitio, para reservar su espacio antes de cargar.
+export const imageDims = (src = '') => {
+  const match = String(src).match(/(?:images|logos)\/.*$/)
+  const size = match && imageSizes[match[0]]
+  return size ? { width: size[0], height: size[1] } : {}
+}
+const CompanyPage = lazy(() => import('./pages/CompanyPage').then((m) => ({ default: m.CompanyPage })))
+const CompaniesPage = lazy(() => import('./pages/CompaniesPage').then((m) => ({ default: m.CompaniesPage })))
+const ExpandedAboutPage = lazy(() => import('./pages/AboutPage').then((m) => ({ default: m.ExpandedAboutPage })))
+const LegalPage = lazy(() => import('./pages/LegalPage').then((m) => ({ default: m.LegalPage })))
 
 const navItems = [['Inicio', 'inicio'], ['Empresas', 'empresas'], ['Nosotros', 'nosotros'], ['En cifras', 'cobertura'], ['Trabaje con nosotros', 'talento'], ['Contacto', 'contacto']]
 
-const B = import.meta.env.BASE_URL
-const pad = (number) => String(number).padStart(2, '0')
-const companyUrl = (company) => `${B}empresas/${company.slug}`
-const telHref = (phone) => `tel:+504${phone.replace(/\D/g, '')}`
-const SITE = 'https://capgrupo.com'
+export const B = import.meta.env.BASE_URL
+export const pad = (number) => String(number).padStart(2, '0')
+export const companyUrl = (company) => `${B}empresas/${company.slug}`
+export const telHref = (phone) => `tel:+504${phone.replace(/\D/g, '')}`
+export const SITE = 'https://capgrupo.com'
 const upsertTag = (selector, tag, attrs) => {
   let el = document.head.querySelector(selector)
   if (!el) {
@@ -23,17 +35,36 @@ const upsertTag = (selector, tag, attrs) => {
   for (const [key, value] of Object.entries(attrs)) el.setAttribute(key, value)
 }
 // Actualiza título, descripción, canonical y etiquetas Open Graph de la página actual.
-const setPageMeta = (title, description) => {
+// Ruta del sitio sin la base de despliegue ('' para la portada). /index.html equivale a la portada.
+const currentRoute = () => {
+  const root = B.replace(/\/$/, '')
+  const path = window.location.pathname.replace(/\/$/, '')
+  const route = path.startsWith(root) ? path.slice(root.length) : path
+  return route === '/index.html' ? '' : route
+}
+// Imagen para compartir por ruta. Las empresas sin foto propia usan la imagen del grupo.
+export const defaultShareImage = 'images/equipo-grupo-cap.jpg'
+export const shareImages = {
+  'inversiones-sm': 'images/intro/inversiones-sm.jpg',
+  'distribuidora-mansiago': 'images/intro/distribuidora-mansiago.jpg',
+  'auto-repuestos-blessing': 'images/intro/auto-repuestos-blessing.jpg',
+  'tecnicentro-didasa': 'images/intro/tecnicentro-didasa.jpg',
+  'japan-hn': 'images/intro/japan-hn.jpg',
+}
+export const setPageMeta = (title, description, image = defaultShareImage) => {
   document.title = title
-  const url = `${SITE}${window.location.pathname.replace(/\/$/, '') || '/'}`
+  // El canonical sale de la ruta conocida, nunca de la URL escrita por el visitante.
+  const url = `${SITE}${currentRoute() || '/'}`
   upsertTag('meta[name="description"]', 'meta', { name: 'description', content: description })
   upsertTag('link[rel="canonical"]', 'link', { rel: 'canonical', href: url })
   upsertTag('meta[property="og:title"]', 'meta', { property: 'og:title', content: title })
   upsertTag('meta[property="og:description"]', 'meta', { property: 'og:description', content: description })
   upsertTag('meta[property="og:url"]', 'meta', { property: 'og:url', content: url })
+  upsertTag('meta[property="og:image"]', 'meta', { property: 'og:image', content: `${SITE}/${image}` })
+  upsertTag('meta[name="twitter:image"]', 'meta', { name: 'twitter:image', content: `${SITE}/${image}` })
 }
-const mapsHref = (address) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(/Honduras|Tegucigalpa/.test(address) ? address : `${address}, Tegucigalpa, Honduras`)}`
-const external = { target: '_blank', rel: 'noreferrer' }
+export const mapsHref = (address) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(/Honduras|Tegucigalpa/.test(address) ? address : `${address}, Tegucigalpa, Honduras`)}`
+export const external = { target: '_blank', rel: 'noreferrer' }
 
 function CountUp({ value, suffix = '' }) {
   const ref = useRef(null)
@@ -72,7 +103,7 @@ const splitWords = (children, state) => Children.map(children, (child) => {
   return child
 })
 
-function Words({ children }) {
+export function Words({ children }) {
   return <>{splitWords(children, { i: 0 })}</>
 }
 
@@ -106,7 +137,7 @@ function TeamGallery() {
         {gallery.map((item, index) => (
           <figure className={`reveal ${item.layout}`} key={item.src} style={{ '--delay': `${index * 140}ms` }}>
             <button type="button" className="gallery-open" onClick={() => setOpen(index)} aria-label={`Ampliar foto: ${item.caption}`}>
-              <img src={item.src} alt={item.alt} loading="lazy" style={{ objectPosition: item.position }} />
+              <img decoding="async" src={item.src} {...imageDims(item.src)} alt={item.alt} loading="lazy" style={{ objectPosition: item.position }} />
               <span className="gallery-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" /></svg></span>
             </button>
             <figcaption>{item.caption}</figcaption>
@@ -116,7 +147,7 @@ function TeamGallery() {
       {photo && (
         <div className="lightbox" role="dialog" aria-modal="true" aria-label={photo.caption} onClick={() => setOpen(null)}>
           <figure className="lightbox-figure" key={photo.src} onClick={(event) => event.stopPropagation()}>
-            <img src={photo.src} alt={photo.alt} />
+            <img decoding="async" src={photo.src} {...imageDims(photo.src)} alt={photo.alt} />
             <figcaption><span>{pad(open + 1)} / {pad(total)}</span>{photo.caption}</figcaption>
           </figure>
           <button type="button" className="lightbox-close" ref={closeRef} onClick={() => setOpen(null)} aria-label="Cerrar foto">×</button>
@@ -133,9 +164,9 @@ const socials = [
   { key: 'facebook', label: 'Facebook', icon: <path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4V8.5a.5.5 0 0 1 .5-.5z" /> },
   { key: 'tiktok', label: 'TikTok', icon: <path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5M14 3c.4 2.6 2.2 4.4 5 4.6" /> },
 ]
-const companySocials = [...socials, { key: 'whatsapp', label: 'WhatsApp', icon: <><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.3z" /><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2.2-1-1 .9a4.5 4.5 0 0 1-2.1-2.1l.9-1-1-2.2z" /></> }]
+export const companySocials = [...socials, { key: 'whatsapp', label: 'WhatsApp', icon: <><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.3z" /><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2.2-1-1 .9a4.5 4.5 0 0 1-2.1-2.1l.9-1-1-2.2z" /></> }]
 
-function SocialLinks({ className = '', email = 'grupocap@cap.hn', links = contact, owner = 'Grupo CAP', networks = socials }) {
+export function SocialLinks({ className = '', email = 'grupocap@cap.hn', links = contact, owner = 'Grupo CAP', networks = socials }) {
   return (
     <ul className={`social-links ${className}`}>
       {networks.filter(({ key }) => links[key]).map(({ key, label, icon }) => (
@@ -170,7 +201,7 @@ function CompanyCards() {
           const [label, segment] = company.type.split(' · ')
           return (
             <li key={company.slug} className="company-card" style={{ '--i': index }}>
-              <a href={companyUrl(company)} className="company-card-logo" aria-label={`Conocer ${company.name}`}><img src={company.logo} alt="" loading="lazy" /></a>
+              <a href={companyUrl(company)} className="company-card-logo" aria-label={`Conocer ${company.name}`}><img decoding="async" src={company.logo} {...imageDims(company.logo)} alt="" loading="lazy" /></a>
               <div className="company-card-body">
                 <span className="company-card-tag">{segment ?? 'Grupo'}</span>
                 <h3>{company.name}</h3>
@@ -271,7 +302,7 @@ function ProcessGallery() {
                 <span className="process-flip-hint" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4" /></svg>Ver foto</span>
               </div>
               <figure className="process-back" aria-hidden={!isFlipped}>
-                <img src={process.image} alt={`Imagen de ${process.title}`} loading="lazy" />
+                <img decoding="async" src={process.image} {...imageDims(process.image)} alt={`Imagen de ${process.title}`} loading="lazy" />
                 <figcaption>
                   <span>{pad(index + 1)}</span>
                   <strong>{process.title}</strong>
@@ -287,7 +318,7 @@ function ProcessGallery() {
 }
 
 
-const pillarIcons = [
+export const pillarIcons = [
   <><path d="M3 17l6-6 4 4 8-8" /><path d="M15 7h6v6" /></>,
   <><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></>,
   <><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12" /><circle cx="16" cy="6" r="2" /><circle cx="10" cy="12" r="2" /><circle cx="18" cy="18" r="2" /></>,
@@ -358,7 +389,7 @@ function Intro() {
       <div className="intro-slides" aria-hidden="true">
         {introSlides.map((slide, slideIndex) => (
           <figure key={slide.src} className={`intro-slide${slideIndex === index ? ' is-active' : ''}${slideIndex < index ? ' is-past' : ''}`}>
-            <img src={slide.src} alt="" />
+            <img decoding="async" src={slide.src} {...imageDims(slide.src)} alt="" />
           </figure>
         ))}
       </div>
@@ -368,7 +399,7 @@ function Intro() {
         <span className="intro-progress"><span style={{ transform: `scaleX(${(index + 1) / introSlides.length})` }} /></span>
       </div>
       <div className="intro-logo">
-        <img src={B + 'logos/cap-intro.png'} alt="Grupo CAP" />
+        <img decoding="async" src={B + 'logos/cap-intro.png'} alt="Grupo CAP" width="1400" height="587" />
         <span className="intro-tagline">GRUPO EMPRESARIAL CAP </span>
       </div>
       <button type="button" className="intro-skip" onClick={() => setPhase('done')}>Saltar intro <span aria-hidden="true">→</span></button>
@@ -376,7 +407,7 @@ function Intro() {
   )
 }
 
-function useReveal(key) {
+export function useReveal(key) {
   useEffect(() => {
     const items = document.querySelectorAll('.reveal:not(.is-visible)')
     if (!('IntersectionObserver' in window)) {
@@ -395,7 +426,7 @@ function useReveal(key) {
   }, [key])
 }
 
-function Header({ home = true }) {
+export function Header({ home = true }) {
   const [scrolled, setScrolled] = useState(false)
   const [hidden, setHidden] = useState(false)
   const [active, setActive] = useState('')
@@ -465,8 +496,8 @@ function Header({ home = true }) {
             window.dispatchEvent(new Event('cap:intro'))
           }}
         >
-          <img className="logo-white" src={B + 'logos/cap-blanco.png'} alt="" width="112" height="47" />
-          <img className="logo-color" src={B + 'logos/cap.png'} alt="" width="112" height="47" />
+          <img decoding="async" className="logo-white" src={B + 'logos/cap-blanco.png'} alt="" width="112" height="47" />
+          <img decoding="async" className="logo-color" src={B + 'logos/cap.png'} alt="" width="112" height="47" />
         </a>
         <nav id="menu-principal" className="nav-links" aria-label="Principal">
           {navItems.map(([label, id]) => <a key={id} href={`${base}#${id}`} className={active === id ? 'is-active' : undefined} aria-current={active === id ? 'location' : undefined} onClick={() => setOpen(false)}>{label}</a>)}
@@ -568,7 +599,7 @@ function BackToTop({ home = true }) {
   )
 }
 
-function Footer({ home = true }) {
+export function Footer({ home = true }) {
   return (
     <footer className="footer">
       <a
@@ -584,7 +615,7 @@ function Footer({ home = true }) {
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
       </a>
       <div className="footer-inner wrap" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <img src={B + 'logos/cap-blanco.png'} alt="Grupo CAP" width="130" height="55" loading="lazy" />
+        <img decoding="async" src={B + 'logos/cap-blanco.png'} alt="Grupo CAP" width="130" height="55" loading="lazy" />
         <ul className="social-links" style={{ gap: 24 }}>
           <li><a href={contact.instagram} {...external} aria-label="Instagram de Grupo CAP" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" style={{ width: 28, height: 28, color: '#fff' }}><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" fill="none" strokeWidth="1.5" /><circle cx="12" cy="12" r="4" stroke="currentColor" fill="none" strokeWidth="1.5" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" /></svg></a></li>
           <li><a href={contact.facebook} {...external} aria-label="Facebook de Grupo CAP" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true" style={{ width: 28, height: 28, color: '#fff' }}><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v6h4v-6h3l1-4h-4V8.5a.5.5 0 0 1 .5-.5z" stroke="currentColor" fill="none" strokeWidth="1.5" /></svg></a></li>
@@ -605,163 +636,6 @@ function Footer({ home = true }) {
         <a href={B + privacyNotice.slug}>Aviso de privacidad</a>
       </nav>
     </footer>
-  )
-}
-
-function CompanyPage({ company }) {
-  useReveal(company.slug)
-  useEffect(() => { setPageMeta(...(seo.companies[company.slug] ?? [`${company.name} · Grupo CAP`, company.text])) }, [company])
-  const others = companies.filter((item) => item.slug !== company.slug)
-
-  return (
-    <div className="site-shell company-page">
-      <Header home={false} />
-      <main id="contenido">
-        <section className="detail-hero">
-          <div className="detail-hero-inner wrap">
-            <div className="detail-copy reveal">
-              <a className="back-link" href={B + '#empresas'}><span aria-hidden="true">←</span> Ver todas las empresas</a>
-              <p className="eyebrow">Empresa del Grupo CAP</p>
-              <h1><Words>{company.name}</Words></h1>
-              <p className="detail-type">{company.type}</p>
-              {!company.description && <p style={{ fontWeight: 600 }}>{company.text}</p>}
-              <div className="hero-actions">
-                {company.website && <a className="button button-dark" href={company.website} {...external}>Visitar sitio oficial <span aria-hidden="true">↗</span></a>}
-                {company.contact?.email && <a className="button button-red" href={`mailto:${company.contact.email}?subject=${encodeURIComponent(`Cotización - ${company.name}`)}`}>Contáctanos por correo <span aria-hidden="true">↗</span></a>}
-                {company.socials?.whatsapp && <a className="button button-red" href={company.socials.whatsapp} {...external}>Contáctanos por WhatsApp <span aria-hidden="true">↗</span></a>}
-              </div>
-              {company.socials && <div className="detail-social"><span className="mini-label">Síganos</span><SocialLinks className="is-dark" links={company.socials} owner={company.name} networks={companySocials} email={null} /></div>}
-            </div>
-            <div className="detail-logo reveal"><img src={company.logo} alt={`Logo de ${company.name}`} /></div>
-          </div>
-          <div className="wrap">
-            <dl className="detail-summary">
-              <div><dt>Parte de</dt><dd>Grupo Empresarial CAP</dd></div>
-              <div><dt>Cobertura</dt><dd>{company.coverage}</dd></div>
-              <div><dt>Unidad</dt><dd>{company.unit}</dd></div>
-            </dl>
-          </div>
-        </section>
-
-        {company.description && (
-          <section className="section wrap detail-profile-section">
-            <div className={`detail-profile${company.infrastructure ? '' : ' is-single'}`}>
-              <div className="reveal">
-                <p className="lead" style={{ textAlign: 'justify' }}>{company.description}</p>
-                <span className="mini-label">{company.highlightsTitle}</span>
-                <ul className="check-list">{company.highlights.map((item) => <li key={item}>{item}</li>)}</ul>
-              </div>
-              {company.infrastructure && (
-                <div className="reveal">
-                  <span className="mini-label">Infraestructura</span>
-                  <ul className="infra-cards">{company.infrastructure.map(([value, label]) => <li key={label}><strong>{value}</strong><span>{label}</span></li>)}</ul>
-                </div>
-              )}
-            </div>
-            {showCompanyMissionVision && company.mission && (
-              <div className="mission-grid">
-                <article className="reveal"><span className="mini-label">Misión</span><p>{company.mission}</p></article>
-                <article className="reveal"><span className="mini-label">Visión</span><p>{company.vision}</p></article>
-              </div>
-            )}
-            {company.list && (
-              <div className="detail-list reveal">
-                <span className="mini-label">{company.listTitle}</span>
-                <ul className="tag-list">{company.list.map((item) => <li key={item}>{item}</li>)}</ul>
-              </div>
-            )}
-            <div className="detail-contact-card reveal">
-              <div>
-                <span className="mini-label">{company.contact.address ? 'Visítenos' : 'Contáctenos'}</span>
-                {company.contact.address && <address>{company.contact.address}</address>}
-                <p className="contact-meta"><a href={telHref(company.contact.phone)}>Tel. {company.contact.phone}</a><a href={`mailto:${company.contact.email}`}>{company.contact.email.split('@')[0]}@<wbr />{company.contact.email.split('@')[1]}</a></p>
-              </div>
-              {company.contact.address
-                ? <a className="button button-light" href={company.contact.mapsUrl ?? mapsHref(company.contact.address)} {...external}>Cómo llegar <span aria-hidden="true">↗</span></a>
-                : <a className="button button-light" href={company.website} {...external}>Visitar sitio <span aria-hidden="true">↗</span></a>}
-            </div>
-          </section>
-        )}
-
-
-      </main>
-      <Footer home={false} />
-    </div>
-  )
-}
-
-function ExpandedAboutPage() {
-  useReveal('about-expanded')
-  useEffect(() => { setPageMeta(...seo.about) }, [])
-
-  return (
-    <div className="site-shell company-page">
-      <Header home={false} />
-      <main id="contenido">
-        <section className="section wrap" id="nosotros-expanded" style={{ paddingTop: 100 }}>
-          <a href={B + '#nosotros'} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 50, color: 'var(--red)', textDecoration: 'none', fontWeight: 600, fontSize: 14 }}>
-            <span style={{ fontSize: 18 }}>←</span> Volver
-          </a>
-
-          <h1 className="display" style={{ marginBottom: 40, textAlign: 'center' }}>Quiénes <em>somos</em></h1>
-
-          <div className="about-heading reveal" style={{ borderTop: 'none', paddingTop: 0, paddingBottom: 0, marginBottom: 0, marginTop: 0 }}>
-            <div>
-              <p className="lead" style={{ textAlign: 'justify', maxWidth: 'none', marginBottom: 0 }}>{group.lead.split('Centro de Servicios Compartidos').map((part, index) => index ? <span key={index}><strong>Centro de Servicios Compartidos</strong>{part}</span> : part)}</p>
-            </div>
-          </div>
-
-          <div className="purpose" style={{ marginTop: 16, paddingTop: 0 }}>
-            <div className="mission-grid">
-              <article className="reveal"><span className="mini-label">Nuestra misión</span><p style={{ wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'none', WebkitHyphens: 'none' }}>{group.mission}</p></article>
-              <article className="reveal"><span className="mini-label">Nuestra visión</span><p style={{ wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'none', WebkitHyphens: 'none' }}>{group.vision}</p></article>
-            </div>
-            <blockquote className="belief reveal"><p><em>Crecer y ayudar a crecer</em> a quienes hacen posible nuestra historia.</p></blockquote>
-            <figure className="purpose-photo reveal"><img src={B + 'images/colaboradora.png'} alt="Colaboradora de Grupo CAP con tableta en mano" width="321" height="447" loading="lazy" decoding="async" /></figure>
-          </div>
-        </section>
-
-        {showTimeline && (
-        <section className="timeline" style={{ paddingTop: 0, marginTop: -60 }}>
-          <div className="section wrap">
-            <div className="section-heading reveal"><h2 className="display" style={{ hyphens: 'none', WebkitHyphens: 'none', overflowWrap: 'break-word' }}><Words>Nuestra<br /><em>trayectoria</em></Words></h2><p>Conozca los principales hitos de las empresas que forman Grupo CAP.</p></div>
-            <ol className="timeline-list">{milestones.map(([year, title, text, logos]) => <li className="reveal" key={year}><span className="timeline-year">{year}</span><span className="timeline-logos">{logos.map(([name, src]) => <span className="timeline-logo" key={name} title={name}><img src={src} alt={name} loading="lazy" /></span>)}</span><div><h3>{title}</h3><p>{text}</p></div></li>)}</ol>
-          </div>
-        </section>
-        )}
-
-        <section className="dark-section" style={{ paddingTop: 60, paddingBottom: 60 }}>
-          <div className="wrap">
-            <h2 className="display" style={{ marginBottom: 40, color: '#fff', textAlign: 'center' }}>Pilares de <em>Grupo CAP</em></h2>
-            <p style={{ fontSize: 18, color: '#fff', textAlign: 'center', marginBottom: 60 }}>Cinco pilares que convierten nuestra visión en decisiones, acciones y resultados.</p>
-          <div className="pillar-hive">
-            <div className="hex hex-core reveal"><div className="hex-inner"><img src={B + 'logos/cap.png'} alt="Grupo CAP" /></div></div>
-            {pillars.map(([title, text], index) => (
-              <article className={`hex hex-pillar hex-pos-${index + 1} reveal`} key={title}>
-                <div className="hex-inner">
-                  <span className="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24">{pillarIcons[index]}</svg></span>
-                  <span className="pillar-step">{pad(index + 1)}</span>
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-          </div>
-        </section>
-
-        <section className="future" style={{ minHeight: 400, paddingBottom: 0, marginBottom: 0 }}>
-          <img className="future-image" src={B + 'images/equipo-muro-cap.webp'} alt="" loading="lazy" />
-          <div className="future-copy wrap reveal">
-            <h3 style={{ fontSize: 28, fontWeight: 600, color: '#fff', letterSpacing: '1.4px', textTransform: 'uppercase', margin: '0 0 18px' }}>Visión de futuro</h3>
-            <h2 className="display"><Words>Construimos hoy<br />el sector de <em>mañana.</em></Words></h2>
-            <p style={{ textAlign: 'justify' }}>Impulsamos la mejora de nuestros procesos, el desarrollo de nuestro equipo y el uso de tecnología para fortalecer el servicio a nuestros clientes.</p>
-          </div>
-        </section>
-
-      </main>
-      <Footer />
-    </div>
   )
 }
 
@@ -895,7 +769,7 @@ function CoverageZones() {
           </ul>
         </div>
         <div className="zones-map reveal" aria-hidden="true">
-          <img className="zones-shape-img" src={mapaHonduras} alt="" />
+          <img className="zones-shape-img" src={mapaHonduras} alt="" width="682" height="343" decoding="async" />
           <svg viewBox="0 0 100 100" preserveAspectRatio="none">
                         {zones.filter((zone) => !zone.hub).map((zone) => (
               <line key={zone.city} x1={hub.x} y1={hub.y} x2={zone.x} y2={zone.y} className={zones[active] === zone ? 'is-active' : ''} />
@@ -921,7 +795,7 @@ function ImageRibbon() {
       <div className="ribbon-track">
         {[...items, ...items].map((item, index) => (
           <figure key={index} className="ribbon-item" style={{ '--i': index % items.length, '--dir': index % 2 ? 1 : -1 }} aria-hidden={index >= items.length || undefined}>
-            <img src={item.src} alt={index < items.length ? item.alt : ''} loading="lazy" />
+            <img decoding="async" src={item.src} {...imageDims(item.src)} alt={index < items.length ? item.alt : ''} loading="lazy" />
             <figcaption>{item.caption}</figcaption>
           </figure>
         ))}
@@ -991,12 +865,12 @@ function HomePage() {
           <h2 className="display" style={{ marginBottom: 0, textAlign: 'left' }}>Quiénes <em>somos</em></h2>
           <div className="about-grid">
             <div className="about-text reveal">
-              <p style={{ textAlign: 'justify' }}>{group.lead}</p>
-              {group.traits.map((paragraph) => <p key={paragraph} style={{ textAlign: 'justify' }}>{paragraph}</p>)}
+              <p className="justified-text">{group.lead}</p>
+              {group.traits.map((paragraph) => <p key={paragraph} className="justified-text">{paragraph}</p>)}
               <a href={B + 'nosotros-completo'} className="button button-red">Ver más <span aria-hidden="true">→</span></a>
             </div>
             <figure className="about-media reveal">
-              <img src={B + 'images/equipo-siete-cap.webp'} alt="Equipo de Grupo CAP frente al logo de la empresa" loading="lazy" style={{ aspectRatio: 'auto', objectFit: 'contain' }} />
+              <img src={B + 'images/equipo-siete-cap.webp'} alt="Equipo de Grupo CAP frente al logo de la empresa" width="1200" height="800" loading="lazy" decoding="async" style={{ aspectRatio: '1200 / 800', objectFit: 'contain' }} />
               <figcaption><strong>160+</strong><span>Colaboradores comprometidos</span></figcaption>
             </figure>
           </div>
@@ -1091,7 +965,7 @@ function HomePage() {
           <div className="contact-grid wrap" style={{ marginTop: 80 }}>
             <figure className="contact-photo reveal">
               <span className="contact-photo-hex" aria-hidden="true" />
-              <img src={B + 'images/equipo-bodega-repuestos.webp'} alt="Colaboradores de Grupo CAP atendiendo en la bodega de repuestos" loading="lazy" style={{ width: '100%', height: 'auto', aspectRatio: '.866', objectFit: 'cover', clipPath: 'polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)', filter: 'none', animation: 'none' }} />
+              <img src={B + 'images/equipo-bodega-repuestos.webp'} alt="Colaboradores de Grupo CAP atendiendo en la bodega de repuestos" width="1200" height="800" loading="lazy" decoding="async" style={{ width: '100%', height: 'auto', aspectRatio: '.866', objectFit: 'cover', clipPath: 'polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%)', filter: 'none', animation: 'none' }} />
             </figure>
             <div id="contacto" className="contact-intro reveal">
               <h2 className="display"><Words>Contacte al equipo<br /><em>indicado.</em></Words></h2>
@@ -1121,34 +995,21 @@ function HomePage() {
   )
 }
 
-// Convierte [texto](url) en enlaces dentro de los textos legales.
-function withLinks(text) {
-  return text.split(/(\[[^\]]+\]\(https?:[^)]+\))/g).map((part, index) => {
-    const match = part.match(/^\[([^\]]+)\]\((https?:[^)]+)\)$/)
-    return match ? <a key={index} href={match[2]}>{match[1]}</a> : part
-  })
-}
-
-function LegalPage({ doc }) {
-  useReveal(doc.slug)
-  useEffect(() => { document.title = `${doc.title} · Grupo CAP` }, [doc])
-
+// Página 404: noindex y sin canonical. Se muestra para cualquier ruta que no exista en el sitio.
+function NotFoundPage() {
+  useEffect(() => {
+    document.title = 'Página no encontrada · Grupo CAP'
+    upsertTag('meta[name="robots"]', 'meta', { name: 'robots', content: 'noindex, nofollow' })
+    return () => upsertTag('meta[name="robots"]', 'meta', { name: 'robots', content: 'index, follow, max-image-preview:large' })
+  }, [])
   return (
     <div className="site-shell company-page">
       <Header home={false} />
       <main id="contenido">
-        <section className="section wrap legal-page" style={{ paddingTop: 120 }}>
-          <a className="back-link" href={B}><span aria-hidden="true">←</span> Volver al inicio</a>
-          <h1 className="display">{doc.title}</h1>
-          <p className="legal-draft" role="note">{legalDraftNote}</p>
-          <p className="lead">{doc.intro}</p>
-          {doc.sections.map((section) => (
-            <div className="legal-section" key={section.title}>
-              <h2>{section.title}</h2>
-              {section.body.map((paragraph) => <p key={paragraph}>{withLinks(paragraph)}</p>)}
-            </div>
-          ))}
-          <p className="legal-updated">Última actualización: {doc.updated}</p>
+        <section className="section wrap legal-page" style={{ paddingTop: 160 }}>
+          <h1 className="display">Página no encontrada</h1>
+          <p className="lead">La dirección que buscó no existe o cambió. Puede volver al inicio o revisar nuestras empresas.</p>
+          <a className="button button-red" href={B}>Volver al inicio</a>
         </section>
       </main>
       <Footer home={false} />
@@ -1157,10 +1018,18 @@ function LegalPage({ doc }) {
 }
 
 export default function App() {
-  const path = window.location.pathname.replace(/\/$/, '')
-  const company = companies.find((item) => path === companyUrl(item))
-  const isExpandedAbout = path === B.replace(/\/$/, '') + '/nosotros-completo'
-  const legalDoc = [privacyNotice, privacyPolicy].find((doc) => path === B.replace(/\/$/, '') + '/' + doc.slug)
+  return <Suspense fallback={null}><Route /></Suspense>
+}
+
+// Elige la página según la URL. Las páginas de ficha, nosotros completo y legales se cargan aparte.
+function Route() {
+  const route = currentRoute()
+  const company = companies.find((item) => route === `/empresas/${item.slug}`)
+  const legalDoc = [privacyNotice, privacyPolicy].find((doc) => route === '/' + doc.slug)
   if (legalDoc) return <LegalPage doc={legalDoc} />
-  return company ? <CompanyPage company={company} /> : isExpandedAbout ? <ExpandedAboutPage /> : <HomePage />
+  if (company) return <CompanyPage company={company} />
+  if (route === '/empresas') return <CompaniesPage />
+  if (route === '/nosotros-completo') return <ExpandedAboutPage />
+  if (route === '') return <HomePage />
+  return <NotFoundPage />
 }
