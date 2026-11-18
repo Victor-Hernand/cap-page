@@ -7,7 +7,7 @@ export const contact = {
   phone: '+504 3156-6090',
   phoneHref: '+50431566090',
   email: 'grupocap@cap.hn',
-  hours: 'Lunes a viernes · 8:00 AM — 5:00 PM',
+  hours: 'Lunes a viernes · 8:00 AM — 5:00 PM · Sábados · 8:00 AM — 12:00 PM',
   whatsapp: 'https://wa.me/50431566090',
   instagram: 'https://www.instagram.com/grupoempresarialcap/',
   facebook: 'https://www.facebook.com/grupoempresarialcap',

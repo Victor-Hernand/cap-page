@@ -1,9 +1,8 @@
-// Textos legales en borrador. Los campos entre corchetes los confirma Legal antes de publicar.
-export const legalDraftNote = 'Borrador en revisión por Legal y Talento Humano. No publicar hasta que los campos entre corchetes estén confirmados.'
-
 // Aviso de privacidad para candidatos (formulario de aplicación). Versión corta; la política completa está en privacyPolicy.
 // Texto corto para el pie de página del sitio público.
 export const footerNotice = "Aviso de privacidad. Grupo Empresarial CAP (Honduras) es responsable de los datos personales que recopila en este sitio. No usamos cookies publicitarias ni de terceros, y no vendemos ni cedemos sus datos a terceros, salvo a proveedores que operan el sitio bajo confidencialidad o por requerimiento legal. Puede ejercer sus derechos de acceso, rectificación, cancelación y oposición escribiendo a s.merci@cap.hn. Consulte la Política de Privacidad y Uso de Datos completa."
+
+import { companies } from './data.js'
 
 export const privacyNotice = {
   slug: 'aviso-de-privacidad',
@@ -12,6 +11,7 @@ export const privacyNotice = {
   sections: [
     { title: 'Para visitantes del sitio', body: [footerNotice] },
     { title: 'Para candidatos', body: ["Grupo Empresarial CAP (Honduras) recopila los datos que usted ingresa en este formulario y los de su currículum vitae con el único fin de evaluar su aplicación a las vacantes de las empresas del grupo y considerarlo para vacantes futuras. Sus datos serán vistos solo por Recursos Humanos y las jefaturas responsables de la vacante, y se registran en la plataforma de gestión de talento con la que trabajamos, bajo confidencialidad. Conservaremos su expediente por 12 meses; si es contratado, pasará a su expediente laboral. No incluya en su currículum datos sensibles (salud, religión, afiliación política); si lo hace, no se usarán para la selección. Puede solicitar acceso, corrección o eliminación de sus datos en cualquier momento escribiendo a s.merci@cap.hn. Al enviar este formulario acepta la Política de Privacidad y Uso de Datos de Grupo CAP."] },
+    { title: 'Empresas cubiertas', body: [`Este aviso aplica a todas las empresas del Grupo CAP: ${companies.map((company) => company.name).join(', ')}. Grupo Empresarial CAP actúa como Centro de Servicios Compartidos de estas empresas.`] },
     { title: 'Política completa', body: ['Consulte la Política de Privacidad y Uso de Datos de Grupo CAP, que explica con detalle qué datos recopilamos, con quién los compartimos, cuánto tiempo los conservamos y cómo ejercer sus derechos.'] },
   ],
   updated: '27 de octubre de 2026',
@@ -23,7 +23,7 @@ export const privacyPolicy = {
   intro: 'Esta política explica qué datos personales recopilamos a través de capgrupo.com y del portal de reclutamiento CAP Recruit, para qué los usamos, con quién los compartimos y cómo puede ejercer sus derechos.',
   sections: [
     { title: '1. Responsable y alcance', body: [
-      'Grupo Empresarial CAP es responsable de los datos personales recopilados a través del sitio capgrupo.com y del portal de reclutamiento CAP Recruit (recruit.capgrupo.com/aplicar), al que el sitio enlaza. Grupo CAP actúa como Centro de Servicios Compartidos de Inversiones S&M, Distribuidora Mansiago, Auto Repuestos Blessing y Tecnicentro DIDASA.',
+      'Grupo Empresarial CAP es responsable de los datos personales recopilados a través del sitio capgrupo.com y del portal de reclutamiento CAP Recruit (recruit.capgrupo.com/aplicar), al que el sitio enlaza. Grupo CAP actúa como Centro de Servicios Compartidos de Inversiones S&M, Distribuidora Mansiago, Japan HN, Auto Repuestos Blessing, Tecnicentro DIDASA, CAP Logistics y Soluciones Marlons.',
       'Razón social: Grupo Empresarial CAP. País: Honduras. Domicilio: Bulevar Comunidad Económica Europea, frente a Plaza Aire Frío, Tegucigalpa, Honduras.',
       'Responsable de la información de privacidad: Sharon Gisselle González, Jefa de Talento Humano y Legal. Correo: s.merci@cap.hn.',
       'Esta política aplica a los candidatos que envían su currículum desde el enlace «Trabaje con nosotros», a quienes envían una solicitud de información desde el sitio y a cualquier persona que nos escriba o use el sitio.',
@@ -49,12 +49,12 @@ export const privacyPolicy = {
     ] },
     { title: '4. Base legal y marco normativo', body: [
       'Tratamos sus datos con base en su consentimiento al enviar un formulario, en el interés legítimo de proteger nuestros sistemas y en el cumplimiento de obligaciones legales en Honduras.',
-      'Honduras aún no cuenta con una ley general de protección de datos personales. Esta política se rige por la Constitución de la República, que reconoce el derecho a la intimidad y la garantía de Hábeas Data; por la Ley de Transparencia y Acceso a la Información Pública (Decreto 170-2006), en lo relativo a la confidencialidad; por la Ley sobre Justicia Constitucional (Decreto 244-2003), y por los principios de licitud, finalidad, proporcionalidad, calidad, seguridad y confidencialidad. [Legal: confirmar este marco antes de publicar.]',
+      'Honduras aún no cuenta con una ley general de protección de datos personales. Esta política se rige por la Constitución de la República, que reconoce el derecho a la intimidad y la garantía de Hábeas Data; por la Ley de Transparencia y Acceso a la Información Pública (Decreto 170-2006), en lo relativo a la confidencialidad; por la Ley sobre Justicia Constitucional (Decreto 244-2003), y por los principios de licitud, finalidad, proporcionalidad, calidad, seguridad y confidencialidad.',
       'Si se aprueba una ley específica, adecuaremos esta política en el plazo que esa ley establezca.',
-      'Referencias oficiales (verificar contra La Gaceta antes de publicar): [Constitución de la República](https://www.oas.org/ext/Portals/33/adam/Content/RsU8CsGIXU29uci6sllzCw/Text/ConstituciondelaRepublica%28actualizadanoviembre2021%29.pdf), [Ley de Transparencia y Acceso a la Información Pública, Decreto 170-2006](https://portalunico.iaip.gob.hn), [Ley sobre Justicia Constitucional, Decreto 244-2003](https://www.tsc.gob.hn/biblioteca/index.php/leyes/144-ley-sobre-justicia-constitucional) y [Decreto 10-2013, reforma del hábeas data](https://oncae.gob.hn/wp-content/uploads/2024/05/Decreto-10-2013.pdf). Para verificar cada norma: [índice de legislación básica de Honduras (DPEJ)](https://dpej.rae.es/legislaci%C3%B3n-b%C3%A1sica-de-honduras) y el [PDF de la Ley de Protección de Datos Personales publicado por el IAIP](https://cei.iaip.gob.hn/doc/Ley%20de%20Proteccion%20de%20Datos%20Personales.pdf). [Legal: confirmar si esta ley está vigente; si lo está, la frase anterior debe corregirse.]',
+      'Referencias: [Constitución de la República](https://www.oas.org/ext/Portals/33/adam/Content/RsU8CsGIXU29uci6sllzCw/Text/ConstituciondelaRepublica%28actualizadanoviembre2021%29.pdf), [Ley de Transparencia y Acceso a la Información Pública, Decreto 170-2006](https://portalunico.iaip.gob.hn), [Ley sobre Justicia Constitucional, Decreto 244-2003](https://www.tsc.gob.hn/biblioteca/index.php/leyes/144-ley-sobre-justicia-constitucional) y [Decreto 10-2013, reforma del hábeas data](https://oncae.gob.hn/wp-content/uploads/2024/05/Decreto-10-2013.pdf). Para verificar cada norma: [índice de legislación básica de Honduras (DPEJ)](https://dpej.rae.es/legislaci%C3%B3n-b%C3%A1sica-de-honduras) y el [PDF de la Ley de Protección de Datos Personales publicado por el IAIP](https://cei.iaip.gob.hn/doc/Ley%20de%20Proteccion%20de%20Datos%20Personales.pdf).',
     ] },
     { title: '5. Evaluación de postulaciones con herramientas automatizadas', body: [
-      'Para ordenar y revisar las postulaciones usamos herramientas de apoyo, incluida inteligencia artificial, que comparan el currículum con los requisitos de la vacante y generan un puntaje de referencia. [Legal y RR. HH.: confirmar el proveedor y el alcance de estas herramientas.]',
+      'Para ordenar y revisar las postulaciones usamos herramientas de apoyo, incluida inteligencia artificial, que comparan el currículum con los requisitos de la vacante y generan un puntaje de referencia.',
       'Ninguna decisión de contratación se toma solo con esa herramienta: una persona del área de Talento Humano revisa cada postulación.',
       'Si quiere que su postulación sea revisada solo de forma manual, o que se le explique el resultado, escriba a s.merci@cap.hn.',
     ] },

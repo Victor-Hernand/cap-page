@@ -3,6 +3,8 @@
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body { margin: 0; min-width: 320px; }
 img { display: block; max-width: 100%; }
+/* Con width/height en el HTML, el alto debe seguir a la proporción y no fijarse en píxeles. :where() mantiene la especificidad en cero para que cualquier regla de componente gane. */
+:where(img[width][height]) { height: auto; }
 button, a { font: inherit; }
 button { border: 0; cursor: pointer; }
 a { color: inherit; text-decoration: none; }
