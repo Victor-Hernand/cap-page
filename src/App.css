@@ -573,11 +573,24 @@ body.menu-open { overflow: hidden; }
 @media (max-width: 640px) {
   .about-dark { border-radius: 0; }
   .about-dark:before { display: none; }
-  .about-dark .purpose-photo { background: var(--red); border-radius: 0; }
+  .about-dark .purpose-photo { background: var(--red); border-radius: 0; margin-left: calc(-1 * var(--pad-x)); margin-right: calc(-1 * var(--pad-x)); min-height: 360px; }
+  .about-dark .purpose .mission-grid { gap: 20px; }
   .about-dark .purpose-photo figcaption { font-size: 9px; letter-spacing: 1px; right: 12px; bottom: 12px; }
   .about-dark .purpose .belief p { font-size: 18px; }
   .about-dark h1.about-title { font-size: clamp(40px, 11vw, 56px); }
   .about-dark .about-top-logo { width: 130px; }
+  .about-dark { padding-top: 80px; }
+}
+.about-dark .mission-grid { gap: clamp(16px, 2vw, 24px); }
+.about-dark .mission-grid article { background: linear-gradient(180deg, rgba(12, 12, 12, .72), rgba(12, 12, 12, .6)); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-top: 3px solid var(--red); border-radius: 14px; padding: clamp(26px, 2.6vw, 36px) clamp(22px, 2.4vw, 34px) clamp(28px, 2.8vw, 38px); }
+.about-dark .mission-grid article:first-child { border-right: none; border-bottom: none; }
+.about-dark .mission-grid article:nth-child(2) { border-top-color: #fff; padding-right: clamp(22px, 2.4vw, 34px); }
+.about-dark .mission-grid article p { color: rgba(255, 255, 255, .92); font-size: clamp(16px, 1.25vw, 18px); line-height: 1.65; }
+.about-dark .mission-grid article:nth-child(2) p { max-width: none; }
+.about-dark .pillar-title { font-size: clamp(22px, 2vw, 28px); line-height: 1.2; }
+.about-dark .pillar-rule { display: none; }
+@media (min-width: 641px) {
+  .about-dark .purpose .belief p { font-size: clamp(24px, 2.6vw, 36px); max-width: 1000px; }
 }
 .subheading { margin: 96px 0 28px; font-size: clamp(22px, 2.4vw, 30px); font-weight: 600; letter-spacing: -.02em; }
 .coverage-totals { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 1px; margin: 0; background: var(--dark-line); border: 1px solid var(--dark-line); }

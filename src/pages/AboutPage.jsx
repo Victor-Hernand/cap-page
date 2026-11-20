@@ -10,12 +10,11 @@ export function ExpandedAboutPage() {
     <div className="site-shell company-page">
       <Header home={false} />
       <main id="contenido">
-        <section className="section wrap" id="nosotros-expanded" style={{ paddingTop: 100 }}>
-          <a href={B + '#nosotros'} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 20, color: 'var(--red)', textDecoration: 'none', fontWeight: 600, fontSize: 14 }}>
+        <section className="section wrap" id="nosotros-expanded" style={{ paddingTop: 66 }}>
+          <div className="about-dark" style={{ '--panel-photo': `url(${B}images/taller-fondo.webp)`, backgroundImage: `linear-gradient(135deg, rgba(20, 20, 20, .9) 0%, rgba(20, 20, 20, .8) 55%, rgba(31, 10, 12, .9) 100%), url(${B}images/taller-fondo.webp)`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+          <a href={B + '#nosotros'} className="about-back" style={{ position: 'absolute', top: 24, left: 'var(--pad-x)', zIndex: 3, display: 'inline-flex', alignItems: 'center', gap: 8, padding: '9px 16px', borderRadius: 999, background: 'rgba(255, 255, 255, .94)', color: 'var(--red)', textDecoration: 'none', fontWeight: 700, fontSize: 14, boxShadow: '0 10px 24px -12px rgba(0, 0, 0, .5)' }}>
             <span style={{ fontSize: 18 }}>←</span> Volver
           </a>
-
-          <div className="about-dark" style={{ '--panel-photo': `url(${B}images/taller-fondo.webp)`, backgroundImage: `linear-gradient(135deg, rgba(20, 20, 20, .9) 0%, rgba(20, 20, 20, .8) 55%, rgba(31, 10, 12, .9) 100%), url(${B}images/taller-fondo.webp)`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
           <div className="about-top">
             <h1 className="display about-title">Quiénes <em>somos</em></h1>
             <img className="about-top-logo" src={B + 'logos/cap-blanco.png'} alt="Grupo CAP" width="112" height="47" />
