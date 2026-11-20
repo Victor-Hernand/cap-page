@@ -11,25 +11,30 @@ export function ExpandedAboutPage() {
       <Header home={false} />
       <main id="contenido">
         <section className="section wrap" id="nosotros-expanded" style={{ paddingTop: 100 }}>
-          <a href={B + '#nosotros'} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 50, color: 'var(--red)', textDecoration: 'none', fontWeight: 600, fontSize: 14 }}>
+          <a href={B + '#nosotros'} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 20, color: 'var(--red)', textDecoration: 'none', fontWeight: 600, fontSize: 14 }}>
             <span style={{ fontSize: 18 }}>←</span> Volver
           </a>
 
-          <h1 className="display" style={{ marginBottom: 40, textAlign: 'center' }}>Quiénes <em>somos</em></h1>
+          <div className="about-dark" style={{ '--panel-photo': `url(${B}images/taller-fondo.webp)`, backgroundImage: `linear-gradient(135deg, rgba(20, 20, 20, .9) 0%, rgba(20, 20, 20, .8) 55%, rgba(31, 10, 12, .9) 100%), url(${B}images/taller-fondo.webp)`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+          <div className="about-top">
+            <h1 className="display about-title">Quiénes <em>somos</em></h1>
+            <img className="about-top-logo" src={B + 'logos/cap-blanco.png'} alt="Grupo CAP" width="112" height="47" />
+          </div>
 
           <div className="about-heading reveal" style={{ borderTop: 'none', paddingTop: 0, paddingBottom: 0, marginBottom: 0, marginTop: 0 }}>
             <div>
-              <p className="lead justified-text" style={{ maxWidth: 'none', marginBottom: 0 }}>{group.lead.split('Centro de Servicios Compartidos').map((part, index) => index ? <span key={index}><strong>Centro de Servicios Compartidos</strong>{part}</span> : part)}</p>
+              <p className="lead justified-text" style={{ maxWidth: 'none', marginBottom: 0, textAlign: 'left' }}>{group.lead.split('Centro de Servicios Compartidos').map((part, index) => index ? <span key={index}><strong>Centro de Servicios Compartidos</strong>{part}</span> : part)}</p>
             </div>
           </div>
 
           <div className="purpose" style={{ marginTop: 16, paddingTop: 0 }}>
             <div className="mission-grid">
-              <article className="reveal"><span className="mini-label">Nuestra misión</span><p style={{ wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'none', WebkitHyphens: 'none' }}>{group.mission}</p></article>
-              <article className="reveal"><span className="mini-label">Nuestra visión</span><p style={{ wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'none', WebkitHyphens: 'none' }}>{group.vision}</p></article>
+              <article className="reveal"><div className="pillar-head"><span className="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 20V11M10 20V6M16 20v-6M3 16l6-6 4 3 7-7"/><path d="M15 6h5v5"/></svg></span><span className="mini-label">Nuestra misión</span></div><span className="pillar-rule" aria-hidden="true" /><h3 className="pillar-title">Impulsamos el crecimiento</h3><p style={{ wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'none', WebkitHyphens: 'none' }}>{group.mission}</p></article>
+              <article className="reveal"><div className="pillar-head"><span className="pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><span className="mini-label">Nuestra visión</span></div><span className="pillar-rule" aria-hidden="true" /><h3 className="pillar-title">Ser referentes en Honduras</h3><p style={{ wordBreak: 'break-word', overflowWrap: 'break-word', hyphens: 'none', WebkitHyphens: 'none' }}>{group.vision}</p></article>
+              <figure className="purpose-photo reveal"><img src={B + 'images/colaboradora.png'} alt="Colaboradora de Grupo CAP con tableta en mano" width="321" height="447" loading="lazy" decoding="async" /><figcaption>Personas que dejan huella</figcaption></figure>
             </div>
-            <blockquote className="belief reveal"><p><em>Crecer y ayudar a crecer</em> a quienes hacen posible nuestra historia.</p></blockquote>
-            <figure className="purpose-photo reveal"><img src={B + 'images/colaboradora.png'} alt="Colaboradora de Grupo CAP con tableta en mano" width="321" height="447" loading="lazy" decoding="async" /></figure>
+            <blockquote className="belief reveal" style={{ backgroundImage: `linear-gradient(120deg, rgba(178, 30, 37, .88) 0%, rgba(90, 10, 14, .8) 100%), url(${B}images/carretera-fondo.webp)`, backgroundSize: 'cover', backgroundPosition: 'center' }}><p>“Trabajar con excelencia, Creciendo juntos y Dejando huella.”</p><span className="belief-tag">El espíritu CAP</span></blockquote>
+          </div>
           </div>
         </section>
 

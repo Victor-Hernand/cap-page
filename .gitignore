@@ -25,3 +25,5 @@ dist-ssr
 
 # Metadatos de Windows
 *:Zone.Identifier
+docs/manuales/*/manual.md
+docs/manuales/*/capturas/

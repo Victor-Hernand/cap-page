@@ -32,8 +32,8 @@ export const group = {
     { label: 'Talento humano', icon: 'people' },
   ],
   members: ['inversiones-sm', 'auto-repuestos-blessing', 'tecnicentro-didasa', 'distribuidora-mansiago', 'cap-logistics', 'soluciones-marlons'],
-  mission: 'Dirigir y fortalecer nuestras empresas para ofrecer productos y servicios confiables a nuestros clientes y desarrollar a nuestra gente, mediante una gestión que integre tecnología, innovación y mejora continua.',
-  vision: 'Consolidarnos como un grupo empresarial de referencia en Honduras, con proyección regional, reconocido por la solidez de sus empresas, la confianza de sus clientes y las oportunidades de crecimiento que ofrece a su gente, con una gestión impulsada por la tecnología, la innovación y la mejora continua de nuestros procesos.',
+  mission: 'Impulsar nuestro crecimiento a través de la innovación, la tecnología y el talento de nuestra gente, creando oportunidades de desarrollo y construyendo un legado empresarial que trascienda generaciones.',
+  vision: 'Ser un grupo empresarial de referencia en Honduras en el sector automotriz, reconocido por la solidez de nuestras empresas, la excelencia que nos distingue y la confianza que inspiramos.',
 }
 
 export const companies = [
