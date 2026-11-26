@@ -20,7 +20,8 @@ const results = await new PurgeCSS().purge({
   ],
   css: cssFiles,
   safelist: {
-    standard: [/^is-/, /^has-/, /^intro/, /^nav/],
+    // hex-pos-N se arma con plantilla en AboutPage.jsx (`hex-pos-${index + 1}`): PurgeCSS no la ve y borraría la rejilla de pilares.
+    standard: [/^is-/, /^has-/, /^intro/, /^nav/, /^hex-pos-/],
   },
   keyframes: true,
   variables: true,
